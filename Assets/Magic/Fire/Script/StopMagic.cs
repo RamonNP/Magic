@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class StopMagic : MonoBehaviour
 {
-    public float charging = 1;
-    public float totalCharge = 3;
-    public float totalChargeTime = 2;
     public void Stop()
     {
         this.gameObject.transform.parent.gameObject.SetActive(false);
+        Debug.Log("Dispara Fire Termino Da magia DESATIVANDO");
     }    
     public void Play()
     {
-        //if()
-        //this.gameObject.GetComponent<Animator>().Play("Fire"); ;
+
     }
 }

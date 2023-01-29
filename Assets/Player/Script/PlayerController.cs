@@ -15,7 +15,7 @@ namespace Platformer.Magic.Player
         [SerializeField] private Transform _player;
         [SerializeField] private GroundCheck _groundCheck;
         [SerializeField] private Vector2 _moveTarget;
-        [SerializeField] private Animator _animator;
+
         [SerializeField] private PlayerStatusController _playerStatusController;
         public Rigidbody2D rb;
 
@@ -46,7 +46,6 @@ namespace Platformer.Magic.Player
         private void Start()
         {
             rb = _player.GetComponent<Rigidbody2D>();
-            _animator = this.gameObject.GetComponent<Animator>();
         }
 
         void Update()
@@ -90,10 +89,6 @@ namespace Platformer.Magic.Player
             {
                 rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             }
-        }
-        public void CastFire()
-        {
-            _animator.Play("Casting Spells");
         }
 
         private void MovePlayer()

@@ -1,4 +1,5 @@
 using Platformer.Magic.Player;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,10 @@ public class MagicController : MonoBehaviour
     public float totalCharge = 3;
     public float totalChargeTime = 2;
 
-    [SerializeField] private bool _isFireCharging;
+    public Action<MagicEnum> OnplayerCastMagicByBtn;
+    public Action<MagicEnum, int> OnplayerCastMagicChargindValue;
+
+    [SerializeField] private bool _isCharging;
 
 
     private void OnEnable()
@@ -28,23 +32,34 @@ public class MagicController : MonoBehaviour
         _playerController.OnplayerFlip -= Flip;
     }
 
-    public void BtnFireChargingDown()
+    public void BtnChargingDown()
     {
-        Debug.Log("DOWN");
-        _isFireCharging = true;
-    }    
+        _isCharging = true;
+    }       
 
     public void BtnCastFire()
     {
-        Debug.Log("UP");
         _magicFire.transform.GetChild(0).localScale = Vector3.one;
-        _isFireCharging = false;
+        _isCharging = false;
         if (charging > 5)
             charging = 3;
         _magicFire.transform.GetChild(0).localScale *= charging;
+        OnplayerCastMagicByBtn?.Invoke(MagicEnum.Fire);
+        OnplayerCastMagicChargindValue?.Invoke(MagicEnum.Fire, (int) charging);
+        Debug.Log("Dispara Fire Iniciado Pelo BTN");
         charging = 0;
-       _playerController.CastFire();
+    }
+    public void BtnCastMagicByName(String name)
+    {
+        MagicEnum magicEnum;
+        Enum.TryParse<MagicEnum>(name, out magicEnum);
 
+        _isCharging = false;
+        if (charging > 5)
+            charging = 3;
+        OnplayerCastMagicByBtn?.Invoke(magicEnum);
+        OnplayerCastMagicChargindValue?.Invoke(magicEnum, (int)charging);
+        Debug.Log("Dispara name Iniciado Pelo BTN");
     }
     public void CastFire()
     {
@@ -52,7 +67,8 @@ public class MagicController : MonoBehaviour
         _magicFire.transform.position = _originOfMagic.position;
         _magicFire.transform.localScale = _originOfMagic.localScale;
         _magicFire.gameObject.SetActive(true);
-        
+        Debug.Log("Dispara Fire Mafia FIre Iniciada");
+
     }
     public void CastShield()
     {
@@ -80,15 +96,21 @@ public class MagicController : MonoBehaviour
     }
     private void Update()
     {
-        if (_isFireCharging == (true))
+        
+        if (_isCharging == (true))
         {
             charging += Time.deltaTime * ((totalCharge - 1) / totalChargeTime);
         }
         charging = Mathf.Clamp(charging, 1, totalCharge);
 
-
-
-
     }
 
+
+}
+public enum MagicEnum
+{
+    Fire,
+    Fireball,
+    Shield,
+    Winter
 }
