@@ -23,16 +23,12 @@ public class MagicFireBallController : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-
-    }
-
     // Update is called once per frame
     public void CastMagicFireball(MagicEnum magic)
     {
         if(magic.Equals(MagicEnum.Fireball)) {
             Debug.Log("CastMagicFireball" + MagicEnum.Fireball + "Iniciando aparição da Magia");
+            //TODO criar poll de magia, não instanciar.
             GameObject _fireMagic = Instantiate(_fireMagicprefab, _fireMagicOrigem.position, _fireMagicOrigem.rotation);
             _fireMagic.transform.localScale *= _charging;
             _fireMagic.gameObject.SetActive(true);
