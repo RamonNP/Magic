@@ -59,7 +59,7 @@ public class MagicController : MonoBehaviour
             charging = 3;
         OnplayerCastMagicByBtn?.Invoke(magicEnum);
         OnplayerCastMagicChargindValue?.Invoke(magicEnum, (int)charging);
-        Debug.Log("Dispara name Iniciado Pelo BTN");
+        Debug.Log("Dispara name Iniciado Pelo BTN"+ name);
     }
     public void CastFire()
     {
@@ -112,5 +112,6 @@ public enum MagicEnum
     Fire,
     Fireball,
     Shield,
+    MagicIce,
     Winter
 }

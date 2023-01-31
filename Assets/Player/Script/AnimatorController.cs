@@ -17,12 +17,12 @@ public class AnimatorController : MonoBehaviour
 
     private void OnEnable()
     {
-        _magicController.OnplayerCastMagicByBtn += CastFire;
+        _magicController.OnplayerCastMagicByBtn += CastMagicByEnum;
     }
     private void OnDisable()
     {
         
-        _magicController.OnplayerCastMagicByBtn -= CastFire;
+        _magicController.OnplayerCastMagicByBtn -= CastMagicByEnum;
     }
 
     public void MagicControllerCastFireByAnimation()
@@ -36,7 +36,12 @@ public class AnimatorController : MonoBehaviour
         Debug.Log("Dispara "+ MagicEnum.Fireball + " Iniciando aparição da Magia");
         OnplayerCastMagicByAnimation?.Invoke(MagicEnum.Fireball);
     }
-    public void CastFire(MagicEnum magic)
+    public void MagicControllerMagicIceByAnimation()
+    {
+        Debug.Log("Dispara " + MagicEnum.MagicIce + " Iniciando aparição da Magia");
+        OnplayerCastMagicByAnimation?.Invoke(MagicEnum.MagicIce);
+    }
+    public void CastMagicByEnum(MagicEnum magic)
     {
         switch (magic)
         {
@@ -47,6 +52,10 @@ public class AnimatorController : MonoBehaviour
             case MagicEnum.Fireball:
                 Debug.Log("Dispara Fire Iniciando Animação do PLayer");
                 _animator.Play("PlayerCastFireball");
+                break;
+            case MagicEnum.MagicIce:
+                Debug.Log("Dispara Ice Iniciando Animação do PLayer");
+                _animator.Play("CastIce");
                 break;
             case MagicEnum.Shield:
                 break;
