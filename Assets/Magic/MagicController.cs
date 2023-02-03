@@ -113,5 +113,6 @@ public enum MagicEnum
     Fireball,
     Shield,
     MagicIce,
+    Comet,
     Winter
 }
