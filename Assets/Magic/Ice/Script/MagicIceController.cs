@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,20 +14,26 @@ public class MagicIceController : MonoBehaviour
     [SerializeField] private float _speed = 1.0f;
 
     // The target (cylinder) position.
-    private Transform _target;
-
-
+    [SerializeField] private Transform _target;
+    private bool isStoppedAttack;
 
 
 
     private void OnEnable()
     {
+        _iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation += CastIce;
         _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
     }
 
+    private void StopMagicAction()
+    {
+        isStoppedAttack = false;
+    }
+
     private void OnDisable()
     {
+        _iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation -= CastIce;
         _magicController.OnplayerCastMagicChargindValue -= ChangeCharginValue;
 
@@ -34,12 +41,21 @@ public class MagicIceController : MonoBehaviour
     public void CastIce(MagicEnum magic)
     {
         Debug.Log("CHEGOU NA MAGIA GELO");
-        if (magic.Equals(MagicEnum.MagicIce))
+        if (magic.Equals(MagicEnum.MagicIce) && isStoppedAttack == false)
         {
-
+            isStoppedAttack = true;
             _iceMagic.gameObject.SetActive(true);
+
+            _target.localPosition = _iceMagicOrigem.position;
             _iceMagic.transform.localPosition = _iceMagicOrigem.position;
             _iceMagic.transform.localScale = _iceMagicOrigem.localScale;
+            if(_iceMagicOrigem.localScale.x > 0)
+            {
+                _target.position += new Vector3(3, 0, 0);
+            } else
+            {
+                _target.position += new Vector3(-3, 0, 0);
+            }
 
             //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
@@ -59,11 +75,14 @@ public class MagicIceController : MonoBehaviour
         Destroy(iceMagic);
         //yield return new WaitForSeconds(1f);
     }
+    public float step;
 
     private void Update()
     {
-        //var step = _speed * Time.deltaTime; // calculate distance to move
-        //_iceMagic.transform.position = Vector3.MoveTowards(_iceMagic.transform.position, _target.position, step);
+        step = _speed * Time.deltaTime; // calculate distance to move
+
+        _iceMagic.transform.position = Vector2.MoveTowards(_iceMagic.transform.position, _target.position, step);
+        //_iceMagic.transform.position = Vector3.MoveTowards(Vector3.zero, new Vector3(10,1,1), step);
     }
 
 }
