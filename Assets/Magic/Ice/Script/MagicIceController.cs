@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class MagicIceController : MonoBehaviour
 {
-    [SerializeField] private GameObject _iceMagicprefab;
+    [SerializeField] private GameObject _iceMagic;
     [SerializeField] private Transform _iceMagicOrigem;
     [SerializeField] private AnimatorController _animatorController;
     [SerializeField] private MagicController _magicController;
     [SerializeField] private int _charging;
+    // Adjust the speed for the application.
+    [SerializeField] private float _speed = 1.0f;
+
+    // The target (cylinder) position.
+    private Transform _target;
 
 
 
@@ -31,13 +36,12 @@ public class MagicIceController : MonoBehaviour
         Debug.Log("CHEGOU NA MAGIA GELO");
         if (magic.Equals(MagicEnum.MagicIce))
         {
-            Debug.Log("CastMagicIce" + _iceMagicOrigem.position + "Iniciando aparição da Magia");
-            //TODO criar poll de magia, não instanciar.
-            GameObject _iceMagic = Instantiate(_iceMagicprefab, _iceMagicOrigem.position, _iceMagicprefab.gameObject.transform.rotation);
-            _iceMagic.transform.localScale *= _charging;
+
             _iceMagic.gameObject.SetActive(true);
-            //_iceMagic.GetComponent<Rigidbody2D>().AddForce(_iceMagicOrigem.right * 200);
-            StartCoroutine(TimeMagicOff(2f, _iceMagic));
+            _iceMagic.transform.localPosition = _iceMagicOrigem.position;
+            _iceMagic.transform.localScale = _iceMagicOrigem.localScale;
+
+            //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
     }
 
@@ -55,15 +59,11 @@ public class MagicIceController : MonoBehaviour
         Destroy(iceMagic);
         //yield return new WaitForSeconds(1f);
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Update()
     {
-        
+        //var step = _speed * Time.deltaTime; // calculate distance to move
+        //_iceMagic.transform.position = Vector3.MoveTowards(_iceMagic.transform.position, _target.position, step);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
