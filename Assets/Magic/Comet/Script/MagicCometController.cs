@@ -17,37 +17,39 @@ public class MagicCometController : MonoBehaviour
 
     // The target (cylinder) position.
     [SerializeField] private Transform _target;
-    private bool isStoppedAttack;
-    public float charging = 1;
-    public float totalCharge = 3;
-    public float totalChargeTime = 2;
-
+    [SerializeField] private bool isStoppedAttack;
+   
     public Action<MagicEnum> OnplayerCastMagicByBtn;
     public Action<MagicEnum, int> OnplayerCastMagicChargindValue;
 
     [SerializeField] private bool _isCharging;
- 
 
 
-    private void OnEnable()
-    {
-        _cometMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
-        _animatorController.OnplayerCastMagicByAnimation += CastMagicComet;
-        _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
-    }
 
+
+  
     private void StopMagicAction()
     {
         isStoppedAttack = false;
     }
-
-    private void OnDisable()
+    public void ChangeCharginValue(MagicEnum magic, int charging)
     {
-        _cometMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
-        _animatorController.OnplayerCastMagicByAnimation -= CastMagicComet;
-        _magicController.OnplayerCastMagicChargindValue -= ChangeCharginValue;
-
+        if (magic.Equals(MagicEnum.Comet))
+        {
+            Debug.Log("ChangeCharginValue" + MagicEnum.Comet + "Iniciando aparição da Magia");
+            _charging = charging;
+        }
+       
     }
+    IEnumerator TimeMagicOff(float time, GameObject Comet)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(Comet);
+        //yield return new WaitForSeconds(1f);
+    }
+    public float step;
+
+
     public void CastMagicComet(MagicEnum magic)
     {
         Debug.Log("CHEGOU NA MAGIA COMETA");
@@ -67,23 +69,29 @@ public class MagicCometController : MonoBehaviour
             {
                 _target.position += new Vector3(-3, 0, 0);
             }
-            
+
 
             //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
     }
-    public void ChangeCharginValue(MagicEnum magic, int charging)
+    private void Update()
     {
-        if (magic.Equals(MagicEnum.Comet))
-        {
-            Debug.Log("ChangeCharginValue" + MagicEnum.Comet + "Iniciando aparição da Magia");
-            _charging = charging;
-        }
-        IEnumerator TimeMagicOff(float time, GameObject Comet)
-        {
-            yield return new WaitForSeconds(time);
-            Destroy(Comet);
-            //yield return new WaitForSeconds(1f);
-        }
+        step = _speed * Time.deltaTime; // calculate distance to move
+
+        _cometMagic.transform.position = Vector2.MoveTowards(_cometMagic.transform.position, _target.position, step);
+        //_iceMagic.transform.position = Vector3.MoveTowards(Vector3.zero, new Vector3(10,1,1), step);
+    }
+      private void OnEnable()
+    {
+        //_cometMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
+        _animatorController.OnplayerCastMagicByAnimation += CastMagicComet;
+        _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
+    }
+    private void OnDisable()
+    {
+        _cometMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
+        _animatorController.OnplayerCastMagicByAnimation -= CastMagicComet;
+        _magicController.OnplayerCastMagicChargindValue -= ChangeCharginValue;
+
     }
 }

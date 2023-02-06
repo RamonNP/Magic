@@ -64,8 +64,8 @@ public class AnimatorController : MonoBehaviour
                 _animator.Play("CastIce");
                 break;
             case MagicEnum.Comet:
-                Debug.Log("Dispara Ice Iniciando Animação do PLayer");
-                _animator.Play("CasMagicComet");
+                Debug.Log("Dispara " +magic+" Iniciando Animação do PLayer");
+                _animator.Play("CastMagicComet");
                 break;
             case MagicEnum.Shield:
                 break;
