@@ -83,7 +83,7 @@ public class MagicCometController : MonoBehaviour
     }
       private void OnEnable()
     {
-        //_cometMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
+        _cometMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation += CastMagicComet;
         _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
     }
