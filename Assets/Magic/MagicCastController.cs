@@ -4,13 +4,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicController : MonoBehaviour
+public class MagicCastController : MonoBehaviour
 {
 
     [SerializeField] private GameObject _magicFire;
     [SerializeField] private MagicShieldController _magicShield;
     [SerializeField] private Transform _originOfMagic;
-    [SerializeField] private PlayerStatusController _playerStatusController;
+    [SerializeField] private PlayerStatus _playerStatusController;
     [SerializeField] private PlayerController _playerController;
     public float charging = 1;
     public float totalCharge = 3;

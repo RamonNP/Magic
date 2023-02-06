@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - GroundCheck
+  - Viking
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -44,4 +46,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 528722775
+    locked: 0
+  - name: PlayerFXFront
+    uniqueID: 36644363
     locked: 0

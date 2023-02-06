@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class AnimatorController : MonoBehaviour
 {
-    [SerializeField] private MagicController _magicController;
+    [SerializeField] private MagicCastController _magicController;
     public Action<MagicEnum> OnplayerCastMagicByAnimation;
     [SerializeField] private Animator _animator;
 

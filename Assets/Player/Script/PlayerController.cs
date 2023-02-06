@@ -16,7 +16,7 @@ namespace Platformer.Magic.Player
         [SerializeField] private GroundCheck _groundCheck;
         [SerializeField] private Vector2 _moveTarget;
 
-        [SerializeField] private PlayerStatusController _playerStatusController;
+        [SerializeField] private PlayerStatus _playerStatusController;
         public Rigidbody2D rb;
 
         public Action<bool> OnplayerFlip;

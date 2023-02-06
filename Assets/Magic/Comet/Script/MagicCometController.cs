@@ -10,7 +10,7 @@ public class MagicCometController : MonoBehaviour
     [SerializeField] private GameObject _cometMagic;
     [SerializeField] private Transform _cometMagicOrigem;
     [SerializeField] private AnimatorController _animatorController;
-    [SerializeField] private MagicController _magicController;
+    [SerializeField] private MagicCastController _magicController;
     [SerializeField] private int _charging;
     // Adjust the speed for the application.
     [SerializeField] private float _speed = 1.0f;

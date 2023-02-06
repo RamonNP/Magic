@@ -8,7 +8,7 @@ public class MagicIceController : MonoBehaviour
     [SerializeField] private GameObject _iceMagic;
     [SerializeField] private Transform _iceMagicOrigem;
     [SerializeField] private AnimatorController _animatorController;
-    [SerializeField] private MagicController _magicController;
+    [SerializeField] private MagicCastController _magicController;
     [SerializeField] private int _charging;
     // Adjust the speed for the application.
     [SerializeField] private float _speed = 1.0f;

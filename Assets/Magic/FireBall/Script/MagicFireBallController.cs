@@ -7,7 +7,7 @@ public class MagicFireBallController : MonoBehaviour
     [SerializeField]private GameObject _fireMagicprefab;
     [SerializeField]private Transform _fireMagicOrigem;
     [SerializeField]private AnimatorController _animatorController;
-    [SerializeField]private MagicController _magicController;
+    [SerializeField]private MagicCastController _magicController;
     [SerializeField]private int _charging;
 
     private void OnEnable()
