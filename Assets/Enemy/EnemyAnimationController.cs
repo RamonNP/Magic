@@ -5,7 +5,8 @@ using UnityEngine;
 public class EnemyAnimationController : MonoBehaviour
 {
     [SerializeField] private Animator _animator;
-    [SerializeField] private FxIceEnemyDamage _fxEnemyController;
+    [SerializeField] private FxIceEnemyDamage _fxIceEnemyController;
+    [SerializeField] private FxEnemyController _fxFireEnemyController;
 
 
     public void PlayFXEnemy(MagicStatus magicEnum)
@@ -13,15 +14,20 @@ public class EnemyAnimationController : MonoBehaviour
         if(magicEnum.Magic.Equals(MagicEnum.MagicIce))
         {
             _animator.Play("HurtIce");
-            _fxEnemyController.OnFxFinished += this.FinishAnimationFx;
-            _fxEnemyController.FXDamageIcePlay();
+            _fxIceEnemyController.OnFxFinished += this.FinishAnimationFx;
+            _fxIceEnemyController.FXDamageIcePlay();
+        } else if (magicEnum.Magic.Equals(MagicEnum.Fire))
+        {
+            _animator.Play("Hurt");
+            _fxFireEnemyController.OnFxFinished += this.FinishAnimationFx;
+            _fxFireEnemyController.FXDamagePlay();
         }
     }
 
     public void FinishAnimationFx()
     {
         _animator.Play("Idle");
-        _fxEnemyController.OnFxFinished -= this.FinishAnimationFx;
+        _fxIceEnemyController.OnFxFinished -= this.FinishAnimationFx;
     }
 
 }

@@ -39,9 +39,9 @@ public class MagicFireController : MonoBehaviour
     }
     public void CastMagic(MagicEnum magic)
     {
-        Debug.Log("CHEGOU NA MAGIA "+ magic);
         if (magic.Equals(MagicEnum.Fire) && isStoppedAttack == false)
         {
+            Debug.Log("CHEGOU NA MAGIA "+ magic);
             isStoppedAttack = true;
             _magic.gameObject.SetActive(true);
 
