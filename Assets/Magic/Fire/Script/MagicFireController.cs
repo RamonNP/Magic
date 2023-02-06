@@ -1,12 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicIceController : MonoBehaviour
+public class MagicFireController : MonoBehaviour
 {
-    [SerializeField] private GameObject _iceMagic;
-    [SerializeField] private Transform _iceMagicOrigem;
+    [SerializeField] private GameObject _magic;
+    [SerializeField] private Transform _magicOrigem;
     [SerializeField] private AnimatorController _animatorController;
     [SerializeField] private MagicCastController _magicController;
     [SerializeField] private int _charging;
@@ -21,8 +20,8 @@ public class MagicIceController : MonoBehaviour
 
     private void OnEnable()
     {
-        _iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
-        _animatorController.OnplayerCastMagicByAnimation += CastIce;
+        _magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
+        _animatorController.OnplayerCastMagicByAnimation += CastMagic;
         _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
     }
 
@@ -33,26 +32,27 @@ public class MagicIceController : MonoBehaviour
 
     private void OnDisable()
     {
-        _iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
-        _animatorController.OnplayerCastMagicByAnimation -= CastIce;
+        _magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
+        _animatorController.OnplayerCastMagicByAnimation -= CastMagic;
         _magicController.OnplayerCastMagicChargindValue -= ChangeCharginValue;
 
     }
-    public void CastIce(MagicEnum magic)
+    public void CastMagic(MagicEnum magic)
     {
-        if (magic.Equals(MagicEnum.MagicIce) && isStoppedAttack == false)
+        Debug.Log("CHEGOU NA MAGIA "+ magic);
+        if (magic.Equals(MagicEnum.Fire) && isStoppedAttack == false)
         {
-            Debug.Log("CHEGOU NA MAGIA GELO");
             isStoppedAttack = true;
-            _iceMagic.gameObject.SetActive(true);
+            _magic.gameObject.SetActive(true);
 
-            _target.localPosition = _iceMagicOrigem.position;
-            _iceMagic.transform.localPosition = _iceMagicOrigem.position;
-            _iceMagic.transform.localScale = _iceMagicOrigem.localScale;
-            if(_iceMagicOrigem.localScale.x > 0)
+            _target.localPosition = _magicOrigem.position;
+            _magic.transform.localPosition = _magicOrigem.position;
+            _magic.transform.localScale = _magicOrigem.localScale;
+            if (_magicOrigem.localScale.x > 0)
             {
                 _target.position += new Vector3(3, 0, 0);
-            } else
+            }
+            else
             {
                 _target.position += new Vector3(-3, 0, 0);
             }
@@ -63,17 +63,11 @@ public class MagicIceController : MonoBehaviour
 
     public void ChangeCharginValue(MagicEnum magic, int charging)
     {
-        if (magic.Equals(MagicEnum.MagicIce))
+        if (magic.Equals(MagicEnum.Fire))
         {
-            Debug.Log("ChangeCharginValue" + MagicEnum.MagicIce + "Iniciando aparição da Magia");
+            Debug.Log("ChangeCharginValue" + MagicEnum.Fire + "Iniciando aparição da Magia");
             _charging = charging;
         }
-    }
-    IEnumerator TimeMagicOff(float time, GameObject iceMagic)
-    {
-        yield return new WaitForSeconds(time);
-        Destroy(iceMagic);
-        //yield return new WaitForSeconds(1f);
     }
     public float step;
 
@@ -81,8 +75,7 @@ public class MagicIceController : MonoBehaviour
     {
         step = _speed * Time.deltaTime; // calculate distance to move
 
-        _iceMagic.transform.position = Vector2.MoveTowards(_iceMagic.transform.position, _target.position, step);
+        _magic.transform.position = Vector2.MoveTowards(_magic.transform.position, _target.position, step);
         //_iceMagic.transform.position = Vector3.MoveTowards(Vector3.zero, new Vector3(10,1,1), step);
     }
-
 }

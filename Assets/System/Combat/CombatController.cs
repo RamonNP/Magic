@@ -6,7 +6,6 @@ using UnityEngine;
 public class CombatController : MonoBehaviour
 {
     [SerializeField] private List<MagicStatus> _actionList;
-    [SerializeField] private EnemyAnimationController _enemyAnimationController;
     public Action<MagicStatus, EnemyStatus> OnPlayEnemyFX;
 
     private void OnEnable()
@@ -27,6 +26,8 @@ public class CombatController : MonoBehaviour
 
     private void CombatCalculate(MagicStatus magicEnum, EnemyStatus enemyStatus)
     {
+
+
         //Play animation for damages
         enemyStatus.transform.GetComponent<EnemyAnimationController>().PlayFXEnemy(magicEnum);
         //Calculate damage of enemy

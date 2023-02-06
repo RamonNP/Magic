@@ -29,7 +29,8 @@ public class AnimatorController : MonoBehaviour
     {
         Debug.Log("Dispara Fire Iniciando aparição da Magia");
         _magicController.CastFire();
-        
+        OnplayerCastMagicByAnimation?.Invoke(MagicEnum.Fire);
+
     }    
     public void MagicControllerCastFireBallByAnimation()
     {

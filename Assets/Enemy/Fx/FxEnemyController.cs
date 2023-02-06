@@ -5,25 +5,22 @@ using UnityEngine;
 public class FxEnemyController : MonoBehaviour
 {
     [SerializeField] private List<SpriteRenderer> _spriteEnemy;
-    [SerializeField] private SpriteRenderer _spriteIce;
     [SerializeField] private Animator _animator;
 
-    public void FXDamageIcePlay()
+    public void FXDamagePlay()
     {
-        _spriteIce.enabled = true;
         foreach (SpriteRenderer item in _spriteEnemy)
         {
             item.color = new Color(0, 0, 255, 255);
         }
         StartCoroutine(MagicDuration());
     }
-    public void FXDamageIceStop()
+    public void FXDamageStop()
     {
         foreach (SpriteRenderer item in _spriteEnemy)
         {
             item.color = new Color(255, 255, 255, 255);
         }
-        _spriteIce.enabled = false;
         _animator.Play("Idle");
     }
 
@@ -31,6 +28,6 @@ public class FxEnemyController : MonoBehaviour
     IEnumerator MagicDuration()
     {
         yield return new WaitForSeconds(2);
-        FXDamageIceStop();
+        FXDamageStop();
     }
 }
