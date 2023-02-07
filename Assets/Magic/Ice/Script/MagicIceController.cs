@@ -47,11 +47,12 @@ public class MagicIceController : MonoBehaviour
             _iceMagic.transform.localScale = _scaleBackup;
             isStoppedAttack = true;
             _iceMagic.gameObject.SetActive(true);
+            _iceMagic.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 
             _target.localPosition = _iceMagicOrigem.position;
             _iceMagic.transform.localPosition = _iceMagicOrigem.position;
 
-            _iceMagic.transform.localScale = _iceMagicOrigem.localScale * _magicController.charging;
+            _iceMagic.transform.localScale = _iceMagicOrigem.localScale * _magicController.Charging;
             if(_iceMagicOrigem.localScale.x > 0)
             {
                 _target.position += new Vector3(3, 0, 0);
@@ -59,7 +60,7 @@ public class MagicIceController : MonoBehaviour
             {
                 _target.position += new Vector3(-3, 0, 0);
             }
-            _magicController.charging = 0;
+            _magicController.Charging = 0;
             //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
     }

@@ -57,6 +57,7 @@ public class MagicCometController : MonoBehaviour
         {
             isStoppedAttack = true;
             _cometMagic.gameObject.SetActive(true);
+            _cometMagic.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
 
             _target.localPosition = _cometMagicOrigem.position;
             _cometMagic.transform.localPosition = _cometMagicOrigem.position;

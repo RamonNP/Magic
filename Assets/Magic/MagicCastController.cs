@@ -12,7 +12,7 @@ public class MagicCastController : MonoBehaviour
     [SerializeField] private Transform _originOfMagic;
     [SerializeField] private PlayerStatus _playerStatusController;
     [SerializeField] private PlayerController _playerController;
-    public float charging = 1;
+    [SerializeField] private float _charging = 1;
     public float totalCharge = 3;
     public float totalChargeTime = 2;
 
@@ -21,6 +21,7 @@ public class MagicCastController : MonoBehaviour
 
     [SerializeField] private bool _isCharging;
 
+    public float Charging { get => _charging; set => _charging = value; }
 
     private void OnEnable()
     {
@@ -41,13 +42,13 @@ public class MagicCastController : MonoBehaviour
     {
         _magicFire.transform.GetChild(0).localScale = Vector3.one;
         _isCharging = false;
-        if (charging > 5)
-            charging = 3;
-        _magicFire.transform.GetChild(0).localScale *= charging;
+        if (Charging > 5)
+            Charging = 3;
+        _magicFire.transform.GetChild(0).localScale *= Charging;
         OnplayerCastMagicByBtn?.Invoke(MagicEnum.Fire);
-        OnplayerCastMagicChargindValue?.Invoke(MagicEnum.Fire, (int) charging);
+        OnplayerCastMagicChargindValue?.Invoke(MagicEnum.Fire, (int) Charging);
         Debug.Log("Dispara Fire Iniciado Pelo BTN");
-        charging = 0;
+        Charging = 0;
     }
     public void BtnCastMagicByName(String name)
     {
@@ -55,10 +56,10 @@ public class MagicCastController : MonoBehaviour
         Enum.TryParse<MagicEnum>(name, out magicEnum);
 
         _isCharging = false;
-        if (charging > 5)
-            charging = 3;
+        if (Charging > 5)
+            Charging = 3;
         OnplayerCastMagicByBtn?.Invoke(magicEnum);
-        OnplayerCastMagicChargindValue?.Invoke(magicEnum, (int)charging);
+        OnplayerCastMagicChargindValue?.Invoke(magicEnum, (int)Charging);
         Debug.Log("Dispara name Iniciado Pelo BTN"+ name);
     }
     public void CastFire()
@@ -99,9 +100,9 @@ public class MagicCastController : MonoBehaviour
         
         if (_isCharging == (true))
         {
-            charging += Time.deltaTime * ((totalCharge - 1) / totalChargeTime);
+            Charging += Time.deltaTime * ((totalCharge - 1) / totalChargeTime);
         }
-        charging = Mathf.Clamp(charging, 1, totalCharge);
+        Charging = Mathf.Clamp(Charging, 1, totalCharge);
 
     }
 
