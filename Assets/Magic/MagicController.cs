@@ -5,6 +5,7 @@ using UnityEngine;
 public class MagicController : MonoBehaviour
 {
     [SerializeField] private GameObject _magic;
+    [SerializeField] private MagicEnum _magicType;
     [SerializeField] private Transform _magicOrigem;
     [SerializeField] private AnimatorController _animatorController;
     [SerializeField] private MagicCastController _magicController;
@@ -40,7 +41,7 @@ public class MagicController : MonoBehaviour
     }
     public void CastMagic(MagicEnum magic)
     {
-        if (magic.Equals(MagicEnum.Fire) && isStoppedAttack == false)
+        if (magic.Equals(_magicType) && isStoppedAttack == false)
         {
             Debug.Log("CHEGOU NA MAGIA "+ magic);
             _magic.transform.localScale = _scaleBackup;
