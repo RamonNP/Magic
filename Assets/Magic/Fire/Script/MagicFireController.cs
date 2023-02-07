@@ -15,11 +15,12 @@ public class MagicFireController : MonoBehaviour
     // The target (cylinder) position.
     [SerializeField] private Transform _target;
     private bool isStoppedAttack;
-
+    private Vector3 _scaleBackup;
 
 
     private void OnEnable()
     {
+        _scaleBackup = _magic.transform.localScale;
         _magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation += CastMagic;
         _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
@@ -42,12 +43,13 @@ public class MagicFireController : MonoBehaviour
         if (magic.Equals(MagicEnum.Fire) && isStoppedAttack == false)
         {
             Debug.Log("CHEGOU NA MAGIA "+ magic);
+            _magic.transform.localScale = _scaleBackup;
             isStoppedAttack = true;
             _magic.gameObject.SetActive(true);
 
             _target.localPosition = _magicOrigem.position;
             _magic.transform.localPosition = _magicOrigem.position;
-            _magic.transform.localScale = _magicOrigem.localScale;
+            _magic.transform.localScale = _magicOrigem.localScale * _magicController.charging;
             if (_magicOrigem.localScale.x > 0)
             {
                 _target.position += new Vector3(3, 0, 0);
@@ -56,7 +58,7 @@ public class MagicFireController : MonoBehaviour
             {
                 _target.position += new Vector3(-3, 0, 0);
             }
-
+            _magicController.charging = 0;
             //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
     }

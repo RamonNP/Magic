@@ -17,10 +17,11 @@ public class MagicIceController : MonoBehaviour
     [SerializeField] private Transform _target;
     private bool isStoppedAttack;
 
-
+    private Vector3 _scaleBackup;
 
     private void OnEnable()
     {
+        _scaleBackup = _iceMagic.transform.localScale;
         _iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation += CastIce;
         _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
@@ -43,12 +44,14 @@ public class MagicIceController : MonoBehaviour
         if (magic.Equals(MagicEnum.MagicIce) && isStoppedAttack == false)
         {
             Debug.Log("CHEGOU NA MAGIA GELO");
+            _iceMagic.transform.localScale = _scaleBackup;
             isStoppedAttack = true;
             _iceMagic.gameObject.SetActive(true);
 
             _target.localPosition = _iceMagicOrigem.position;
             _iceMagic.transform.localPosition = _iceMagicOrigem.position;
-            _iceMagic.transform.localScale = _iceMagicOrigem.localScale;
+
+            _iceMagic.transform.localScale = _iceMagicOrigem.localScale * _magicController.charging;
             if(_iceMagicOrigem.localScale.x > 0)
             {
                 _target.position += new Vector3(3, 0, 0);
@@ -56,7 +59,7 @@ public class MagicIceController : MonoBehaviour
             {
                 _target.position += new Vector3(-3, 0, 0);
             }
-
+            _magicController.charging = 0;
             //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
     }

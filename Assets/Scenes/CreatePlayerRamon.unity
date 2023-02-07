@@ -909,11 +909,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4331482720590555397, guid: 2ca259dfd6647af48b0895afa871aa5d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.57
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4331482720590555397, guid: 2ca259dfd6647af48b0895afa871aa5d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.4
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ca259dfd6647af48b0895afa871aa5d, type: 3}
@@ -2874,7 +2874,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 120
+  field of view: 90
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -3780,7 +3780,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 567488039}
   m_Lens:
-    FieldOfView: 120
+    FieldOfView: 90
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
