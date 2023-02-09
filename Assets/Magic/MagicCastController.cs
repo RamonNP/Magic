@@ -10,7 +10,7 @@ public class MagicCastController : MonoBehaviour
     [SerializeField] private GameObject _magicFire;
     [SerializeField] private MagicShieldController _magicShield;
     [SerializeField] private Transform _originOfMagic;
-    [SerializeField] private PlayerStatus _playerStatusController;
+    [SerializeField] private PlayerStatusController _playerStatusController;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private float _charging = 1;
     public float totalCharge = 3;

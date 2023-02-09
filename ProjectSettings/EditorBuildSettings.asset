@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/CreatePlayerInventario.unity
+    guid: 2223f6a7e48d89241aabc58a1fabcb6d
   m_configObjects: {}

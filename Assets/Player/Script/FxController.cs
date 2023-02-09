@@ -10,7 +10,6 @@ public class FxController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_magicController.Charging);
         if (_magicController.Charging > 1.5f)
         {
             _chargingEffects.SetActive(true);
