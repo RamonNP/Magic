@@ -115,5 +115,7 @@ public enum MagicEnum
     Shield,
     MagicIce,
     Comet,
+    Water,
+    Tornado,
     Winter
 }

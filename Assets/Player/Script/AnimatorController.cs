@@ -42,10 +42,20 @@ public class AnimatorController : MonoBehaviour
         Debug.Log("Dispara " + MagicEnum.Comet + " Iniciando aparição da Magia");
         OnplayerCastMagicByAnimation?.Invoke(MagicEnum.Comet);
     }
+    public void MagicControllerWaterByAnimation()
+    {
+        Debug.Log("Dispara " + MagicEnum.Water + " Iniciando aparição da Magia");
+        OnplayerCastMagicByAnimation?.Invoke(MagicEnum.Water);
+    }
     public void MagicControllerMagicIceByAnimation()
     {
         Debug.Log("Dispara " + MagicEnum.MagicIce + " Iniciando aparição da Magia");
         OnplayerCastMagicByAnimation?.Invoke(MagicEnum.MagicIce);
+    }
+    public void MagicControllerMagicTornadoByAnimation()
+    {
+        Debug.Log("Dispara " + MagicEnum.Tornado + " Iniciando aparição da Magia");
+        OnplayerCastMagicByAnimation?.Invoke(MagicEnum.Tornado);
     }
     public void CastMagicByEnum(MagicEnum magic)
     {
@@ -66,6 +76,14 @@ public class AnimatorController : MonoBehaviour
             case MagicEnum.Comet:
                 Debug.Log("Dispara " +magic+" Iniciando Animação do PLayer");
                 _animator.Play("CastMagicComet");
+                break;
+            case MagicEnum.Water:
+                Debug.Log("Dispara " + magic + " Iniciando Animação do PLayer");
+                _animator.Play("CastWaterMagic");
+                break;
+            case MagicEnum.Tornado:
+                Debug.Log("Dispara " + magic + " Iniciando Animação do PLayer");
+                _animator.Play("CastTornadoMagic");
                 break;
             case MagicEnum.Shield:
                 break;

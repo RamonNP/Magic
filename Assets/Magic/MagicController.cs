@@ -66,7 +66,7 @@ public class MagicController : MonoBehaviour
 
     public void ChangeCharginValue(MagicEnum magic, int charging)
     {
-        if (magic.Equals(MagicEnum.Fire))
+        if (magic.Equals(_magicType))
         {
             Debug.Log("ChangeCharginValue" + MagicEnum.Fire + "Iniciando aparição da Magia");
             _charging = charging;
