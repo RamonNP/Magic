@@ -19869,11 +19869,11 @@ RectTransform:
   m_Father: {fileID: 610683979}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -130, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &526253022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25705,11 +25705,11 @@ RectTransform:
   m_Father: {fileID: 610683979}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 20}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: -115}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1130811838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28084,6 +28084,46 @@ MonoBehaviour:
     TypeItem: 5
     SpriteItem: {fileID: 21300000, guid: 3d6b86e755a2c9e478a85380ca6b2f7f, type: 3}
     SlotInventory: 4
+  - IdItem: H01
+    NameItem: Head
+    TypeItem: 4
+    SpriteItem: {fileID: 21300000, guid: 7a59215a9ef5cd44280ed089fa915b80, type: 3}
+    SlotInventory: 5
+  - IdItem: H02
+    NameItem: Head
+    TypeItem: 4
+    SpriteItem: {fileID: 21300000, guid: eec5c79fc463b6949a4ab2be278e5d76, type: 3}
+    SlotInventory: 6
+  - IdItem: A02
+    NameItem: Armor
+    TypeItem: 1
+    SpriteItem: {fileID: 21300000, guid: 10d90ad44071cd54db955108c5df4782, type: 3}
+    SlotInventory: 7
+  - IdItem: A01
+    NameItem: Armor
+    TypeItem: 1
+    SpriteItem: {fileID: 21300000, guid: 3ff83df7a6d42494aacb7ee520f31dba, type: 3}
+    SlotInventory: 8
+  - IdItem: S01
+    NameItem: Shield
+    TypeItem: 6
+    SpriteItem: {fileID: 21300000, guid: 03a61ac5a7d05434096794ccc5e6678a, type: 3}
+    SlotInventory: 9
+  - IdItem: S02
+    NameItem: Shield
+    TypeItem: 6
+    SpriteItem: {fileID: 21300000, guid: 49871fc1cec40b7479e94bbb35cc9fde, type: 3}
+    SlotInventory: 10
+  - IdItem: W02
+    NameItem: Staff
+    TypeItem: 3
+    SpriteItem: {fileID: 21300000, guid: fed4fb4e26648704c9ddddb968f6a577, type: 3}
+    SlotInventory: 11
+  - IdItem: W01
+    NameItem: Staff
+    TypeItem: 3
+    SpriteItem: {fileID: 21300000, guid: 417a4314a92dff44aacad1e0b9865a21, type: 3}
+    SlotInventory: 12
   _itensInventorySlots:
   - {fileID: 899439230}
   - {fileID: 254898160}
@@ -34154,11 +34194,11 @@ RectTransform:
   m_Father: {fileID: 610683979}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -20, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 130, y: 0}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 1, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1937003431
 MonoBehaviour:
   m_ObjectHideFlags: 0
