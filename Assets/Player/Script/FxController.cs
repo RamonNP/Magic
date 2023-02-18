@@ -5,7 +5,8 @@ using UnityEngine;
 public class FxController : MonoBehaviour
 {
     [SerializeField] private MagicCastController _magicController;
-    [SerializeField] private Material _material;
+    [SerializeField] private ParticleSystem _chargingParticle;
+    private Material _material;
     Coroutine _coroutineChangeColorCharging;
 
 
@@ -16,7 +17,19 @@ public class FxController : MonoBehaviour
 
     private void Update()
     {
-
+        if(_magicController.Charging > 1.5f)
+        {
+            if(!_chargingParticle.isPlaying)
+            {
+                _chargingParticle.Play();
+            }
+        } else
+        {
+            if (_chargingParticle.isPlaying)
+            {
+                _chargingParticle.Stop();
+            }
+        }
     }
 
     public void PlayCharging()
