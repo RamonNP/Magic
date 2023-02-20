@@ -24,10 +24,11 @@ public class MagicCometController : MonoBehaviour
 
     [SerializeField] private bool _isCharging;
 
+    private void Awake()
+    {
+        _animatorController = transform.parent.GetComponent<AnimatorController>();
+    }
 
-
-
-  
     private void StopMagicAction()
     {
         isStoppedAttack = false;

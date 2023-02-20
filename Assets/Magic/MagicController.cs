@@ -18,7 +18,10 @@ public class MagicController : MonoBehaviour
     private bool isStoppedAttack;
     private Vector3 _scaleBackup;
 
-
+    private void Awake()
+    {
+        _animatorController = transform.parent.GetComponent<AnimatorController>();
+    }
     private void OnEnable()
     {
         _scaleBackup = _magic.transform.localScale;

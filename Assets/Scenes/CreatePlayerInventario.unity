@@ -20642,6 +20642,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 567488039}
+  - component: {fileID: 567488044}
   - component: {fileID: 567488040}
   - component: {fileID: 567488041}
   - component: {fileID: 567488042}
@@ -20751,7 +20752,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _magicController: {fileID: 2007939297}
-  _animator: {fileID: 0}
+  _magicEvent: {fileID: 3716781775501242356}
+  _animator: {fileID: 3716781775501242348}
+  _playerController: {fileID: 0}
+--- !u!114 &567488044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567488038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22fbe04c5d61f3e4c993832bae2558a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TESTE: {fileID: 0}
+  _playerSpeed: 4
+  _jumpForce: 4
+  _player: {fileID: 3659918915043182118}
+  _groundCheck: {fileID: 234278602}
+  _moveTarget: {x: 0, y: 0}
+  _animatorController: {fileID: 0}
+  _playerStatusController: {fileID: 567488042}
+  rb: {fileID: 0}
 --- !u!1 &592977046
 GameObject:
   m_ObjectHideFlags: 0
@@ -23957,7 +23981,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _magicController: {fileID: 2007939297}
+  _magicEvent: {fileID: 0}
   _animator: {fileID: 818855048}
+  _playerController: {fileID: 0}
 --- !u!1 &824489201
 GameObject:
   m_ObjectHideFlags: 0
@@ -40336,7 +40362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireMagicprefab: {fileID: 2148071512948771355, guid: 0d2273930f94bd343a5cda440cb65dac, type: 3}
   _fireMagicOrigem: {fileID: 91719876}
-  _animatorController: {fileID: 3716781775501242354}
+  _animatorController: {fileID: 0}
   _magicController: {fileID: 2007939297}
   _charging: 0
 --- !u!114 &2007939296
@@ -40353,7 +40379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _iceMagic: {fileID: 1849958785}
   _iceMagicOrigem: {fileID: 91719876}
-  _animatorController: {fileID: 3716781775501242354}
+  _animatorController: {fileID: 0}
   _magicController: {fileID: 2007939297}
   _charging: 0
   _speed: 1
@@ -40375,7 +40401,7 @@ MonoBehaviour:
   _magicShield: {fileID: 2085655077}
   _originOfMagic: {fileID: 91719876}
   _playerStatusController: {fileID: 567488042}
-  _playerController: {fileID: 3716781775501242352}
+  _playerController: {fileID: 0}
   _charging: 1
   totalCharge: 3
   totalChargeTime: 2
@@ -40394,7 +40420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _magic: {fileID: 416111710}
   _magicOrigem: {fileID: 91719876}
-  _animatorController: {fileID: 3716781775501242354}
+  _animatorController: {fileID: 0}
   _magicController: {fileID: 2007939297}
   _charging: 0
   _speed: 1
@@ -40414,7 +40440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cometMagic: {fileID: 1783815550}
   _cometMagicOrigem: {fileID: 91719876}
-  _animatorController: {fileID: 3716781775501242354}
+  _animatorController: {fileID: 0}
   _magicController: {fileID: 2007939297}
   _charging: 0
   _speed: 1
@@ -40437,7 +40463,7 @@ MonoBehaviour:
   _magic: {fileID: 416111710}
   _magicType: 0
   _magicOrigem: {fileID: 91719876}
-  _animatorController: {fileID: 3716781775501242354}
+  _animatorController: {fileID: 0}
   _magicController: {fileID: 2007939297}
   _charging: 0
   _speed: 1
@@ -42897,12 +42923,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3659918915043182118}
-  - component: {fileID: 3716781775501242354}
-  - component: {fileID: 3716781775501242352}
   - component: {fileID: 3716781775501242351}
   - component: {fileID: 3716781775501242348}
   - component: {fileID: 3716781775501242350}
   - component: {fileID: 3716781775501242355}
+  - component: {fileID: 3716781775501242356}
   m_Layer: 0
   m_Name: Wizard - Old
   m_TagString: Untagged
@@ -43246,40 +43271,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.1406565}
   m_Size: {x: 0.5, y: 2.1728697}
   m_Direction: 0
---- !u!114 &3716781775501242352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3657994104684507494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22fbe04c5d61f3e4c993832bae2558a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TESTE: {fileID: 0}
-  _playerSpeed: 4
-  _jumpForce: 4
-  _player: {fileID: 3659918915043182118}
-  _groundCheck: {fileID: 234278602}
-  _moveTarget: {x: 0, y: 0}
-  _playerStatusController: {fileID: 567488042}
-  rb: {fileID: 0}
---- !u!114 &3716781775501242354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3657994104684507494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e51e897fc698af42915783d633c4899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _magicController: {fileID: 2007939297}
-  _animator: {fileID: 0}
 --- !u!212 &3716781775501242355
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -43332,6 +43323,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3716781775501242356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3657994104684507494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a13dc0876be8bb46bc1f12c0dfe6a1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4323078011821409277
 PrefabInstance:
   m_ObjectHideFlags: 0

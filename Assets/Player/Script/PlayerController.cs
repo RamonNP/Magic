@@ -15,8 +15,11 @@ namespace Platformer.Magic.Player
         [SerializeField] private Transform _player;
         [SerializeField] private GroundCheck _groundCheck;
         [SerializeField] private Vector2 _moveTarget;
+        [SerializeField] private AnimatorController _animatorController;
 
         [SerializeField] private PlayerStatusController _playerStatusController;
+        public Action<bool> OnplayerMove;
+        public bool isPlayeMoving;
         public Rigidbody2D rb;
 
         public Action<bool> OnplayerFlip;
@@ -59,13 +62,13 @@ namespace Platformer.Magic.Player
         {
             if (Input.GetAxisRaw("Horizontal") < 0)
             {
-                this.transform.localScale = new Vector3(-1, 1, 1);
+                _player.transform.localScale = new Vector3(-1, 1, 1);
                 OnplayerFlip?.Invoke(true);
                 Debug.Log("FLIP TRUE");
             }
             else if (Input.GetAxisRaw("Horizontal") > 0)
             {
-                this.transform.localScale = new Vector3(1, 1, 1);
+                _player.transform.localScale = new Vector3(1, 1, 1);
                 OnplayerFlip?.Invoke(false);
                 Debug.Log("FLIP False");
             }
@@ -96,12 +99,27 @@ namespace Platformer.Magic.Player
         private void MovePlayer()
         {
             float move = Input.GetAxis("Horizontal");
-            if (_playerStatusController.Isflying)
+            if(move != 0)
             {
-                _moveTarget = new Vector2(Input.GetAxis("Horizontal") * _playerSpeed, Input.GetAxis("Vertical") * 2 *_playerSpeed);
+                if(!isPlayeMoving)
+                {
+                    isPlayeMoving = true;
+                    OnplayerMove?.Invoke(true);
+                }
             } else
             {
-                _moveTarget = new Vector2(Input.GetAxis("Horizontal") * _playerSpeed, 0 *_playerSpeed);
+                if (isPlayeMoving)
+                {
+                    isPlayeMoving = false;
+                    OnplayerMove?.Invoke(false);
+                }
+            }
+            if (_playerStatusController.Isflying)
+            {
+                _moveTarget = new Vector2(move * _playerSpeed, Input.GetAxis("Vertical") * 2 *_playerSpeed);
+            } else
+            {
+                _moveTarget = new Vector2(move * _playerSpeed, 0 *_playerSpeed);
             }
 
             _moveTarget *= Time.deltaTime;

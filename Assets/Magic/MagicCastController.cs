@@ -22,6 +22,11 @@ public class MagicCastController : MonoBehaviour
 
     [SerializeField] private bool _isCharging;
 
+    private void Awake()
+    {
+        _playerController = transform.parent.GetComponent<PlayerController>();
+    }
+
     public float Charging { get => _charging; set => _charging = value; }
 
     private void OnEnable()
