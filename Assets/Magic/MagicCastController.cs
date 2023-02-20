@@ -18,6 +18,7 @@ public class MagicCastController : MonoBehaviour
 
     public Action<MagicEnum> OnplayerCastMagicByBtn;
     public Action<MagicEnum, int> OnplayerCastMagicChargindValue;
+    public Action<bool> OnplayerChargind;
 
     [SerializeField] private bool _isCharging;
 
@@ -36,6 +37,7 @@ public class MagicCastController : MonoBehaviour
     public void BtnChargingDown()
     {
         _isCharging = true;
+        OnplayerChargind?.Invoke(_isCharging);
     }       
 
     public void BtnCastFire()

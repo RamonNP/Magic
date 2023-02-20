@@ -95,7 +95,8 @@ namespace Platformer.Magic.Player
 
         private void MovePlayer()
         {
-            if(_playerStatusController.Isflying)
+            float move = Input.GetAxis("Horizontal");
+            if (_playerStatusController.Isflying)
             {
                 _moveTarget = new Vector2(Input.GetAxis("Horizontal") * _playerSpeed, Input.GetAxis("Vertical") * 2 *_playerSpeed);
             } else

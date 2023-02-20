@@ -18,11 +18,23 @@ public class AnimatorController : MonoBehaviour
     private void OnEnable()
     {
         _magicController.OnplayerCastMagicByBtn += CastMagicByEnum;
+        _magicController.OnplayerChargind += PlayCharging;
     }
     private void OnDisable()
     {
-        
+        _magicController.OnplayerChargind -= PlayCharging;
         _magicController.OnplayerCastMagicByBtn -= CastMagicByEnum;
+    }
+
+    private void PlayCharging(bool animation)
+    {
+        PlayAnimation("ChargingPlayerAnimation");
+    }
+    
+    private void PlayAnimation(string animation)
+    {
+        Debug.Log("Animação Disparada"+animation);
+        _animator.Play(animation);
     }
 
     public void MagicControllerCastFireByAnimation()
@@ -63,27 +75,27 @@ public class AnimatorController : MonoBehaviour
         {
             case MagicEnum.Fire:
                 Debug.Log("Dispara Fire Iniciando Animação do PLayer");
-                _animator.Play("Casting Spells");    
+                PlayAnimation("Casting Spells");    
                 break;
             case MagicEnum.Fireball:
                 Debug.Log("Dispara Fire Iniciando Animação do PLayer");
-                _animator.Play("PlayerCastFireball");
+                PlayAnimation("PlayerCastFireball");
                 break;
             case MagicEnum.MagicIce:
                 Debug.Log("Dispara Ice Iniciando Animação do PLayer");
-                _animator.Play("CastIce");
+                PlayAnimation("CastIce");
                 break;
             case MagicEnum.Comet:
                 Debug.Log("Dispara " +magic+" Iniciando Animação do PLayer");
-                _animator.Play("CastMagicComet");
+                PlayAnimation("CastMagicComet");
                 break;
             case MagicEnum.Water:
                 Debug.Log("Dispara " + magic + " Iniciando Animação do PLayer");
-                _animator.Play("CastWaterMagic");
+                PlayAnimation("CastWaterMagic");
                 break;
             case MagicEnum.Tornado:
                 Debug.Log("Dispara " + magic + " Iniciando Animação do PLayer");
-                _animator.Play("CastTornadoMagic");
+                PlayAnimation("CastTornadoMagic");
                 break;
             case MagicEnum.Shield:
                 break;
