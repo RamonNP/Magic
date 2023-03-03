@@ -10,6 +10,11 @@ public class MagicFireBallController : MonoBehaviour
     [SerializeField]private MagicCastController _magicController;
     [SerializeField]private int _charging;
 
+    private void Awake()
+    {
+        _animatorController = transform.parent.GetComponent<AnimatorController>();
+    }
+
     private void OnEnable()
     {
         _animatorController.OnplayerCastMagicByAnimation += CastMagicFireball;

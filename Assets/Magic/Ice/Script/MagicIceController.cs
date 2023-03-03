@@ -19,6 +19,11 @@ public class MagicIceController : MonoBehaviour
 
     private Vector3 _scaleBackup;
 
+    private void Awake()
+    {
+        _animatorController = transform.parent.GetComponent<AnimatorController>();
+    }
+
     private void OnEnable()
     {
         _scaleBackup = _iceMagic.transform.localScale;
