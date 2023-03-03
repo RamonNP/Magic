@@ -11,7 +11,7 @@ public class StopMagic : MonoBehaviour
     {
         this.gameObject.transform.parent.gameObject.SetActive(false);
         OnMagicStop?.Invoke();
-        Debug.Log("Dispara Fire Termino Da magia DESATIVANDO");
+        //Debug.Log("Dispara Fire Termino Da magia DESATIVANDO");
     }    
     public void Play()
     {

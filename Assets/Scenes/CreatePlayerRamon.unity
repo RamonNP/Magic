@@ -23727,11 +23727,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 3657994104684507494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d56a3394f9c19249a875d0f4e4b650e, type: 3}
+  m_Script: {fileID: 11500000, guid: 327565015e149e54ebcaadeacc366a86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _isflying: 0
-  _magicPower: 10
+  _manaBse: 0
+  _LifeBase: 0
+  attributes:
+    ManaMax: 0
+    ManaCurrent: 0
+    LifeCurrent: 0
+    LifeMax: 0
+    ATK: 0
+    DEF: 0
+    BufferArmorComplet: 0
+    BufferItemArmor: 0
+    Level: 0
+    XP: 0
+    XPNexLevel: 0
 --- !u!114 &3716781775501242354
 MonoBehaviour:
   m_ObjectHideFlags: 0

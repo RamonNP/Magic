@@ -61,13 +61,13 @@ namespace Platformer.Magic.Player
             {
                 this.transform.localScale = new Vector3(-1, 1, 1);
                 OnplayerFlip?.Invoke(true);
-                Debug.Log("FLIP TRUE");
+                //Debug.Log("FLIP TRUE");
             }
             else if (Input.GetAxisRaw("Horizontal") > 0)
             {
                 this.transform.localScale = new Vector3(1, 1, 1);
                 OnplayerFlip?.Invoke(false);
-                Debug.Log("FLIP False");
+                //Debug.Log("FLIP False");
             }
         }
 

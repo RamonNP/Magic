@@ -7,6 +7,7 @@ TagManager:
   - GroundCheck
   - Viking
   - Enemy
+  - Coin
   layers:
   - Default
   - TransparentFX

@@ -30,4 +30,9 @@ public class EnemyAnimationController : MonoBehaviour
         _fxIceEnemyController.OnFxFinished -= this.FinishAnimationFx;
     }
 
+    public void PlayerAttackEnemy()
+    {
+        _animator.Play("Attacking");
+    }
+
 }
