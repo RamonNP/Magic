@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class StopMagic : MonoBehaviour
 {
-    public Action OnMagicStop;
+    public static Action OnMagicStop;
 
     public void Stop()
     {

@@ -9,13 +9,13 @@ public class MagicController : MonoBehaviour
     [SerializeField] private Transform _magicOrigem;
     [SerializeField] private AnimatorController _animatorController;
     [SerializeField] private MagicCastController _magicController;
-    [SerializeField] private int _charging;
+
     // Adjust the speed for the application.
     [SerializeField] private float _speed = 1.0f;
 
     // The target (cylinder) position.
     [SerializeField] private Transform _target;
-    private bool isStoppedAttack;
+    private bool _isStoppedAttack;
     private Vector3 _scaleBackup;
 
     private void Awake()
@@ -24,36 +24,37 @@ public class MagicController : MonoBehaviour
     }
     private void OnEnable()
     {
-        _scaleBackup = _magic.transform.localScale;
-        _magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
+        //_scaleBackup = _magic.transform.localScale;
         _animatorController.OnplayerCastMagicByAnimation += CastMagic;
         _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
     }
 
-    private void StopMagicAction()
-    {
-        isStoppedAttack = false;
-    }
-
     private void OnDisable()
     {
-        _magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation -= CastMagic;
-        _magicController.OnplayerCastMagicChargindValue -= ChangeCharginValue;
 
+    }
+
+    public void ChangeCharginValue(MagicEnum magic, int charging)
+    {
+        if (magic.Equals(MagicEnum.Fire))
+        {
+            Debug.Log("ChangeCharginValue" + MagicEnum.Fire + "Iniciando aparição da Magia");
+            //_charging = charging;
+        }
     }
     public void CastMagic(MagicEnum magic)
     {
-        if (magic.Equals(_magicType) && isStoppedAttack == false)
+        if (magic.Equals(_magicType) && _isStoppedAttack == false)
         {
             Debug.Log("CHEGOU NA MAGIA "+ magic);
-            _magic.transform.localScale = _scaleBackup;
-            isStoppedAttack = true;
+            //_magic.transform.localScale = _scaleBackup;
+            _isStoppedAttack = true;
             _magic.gameObject.SetActive(true);
             _magic.transform.GetChild(0).GetComponent<SpriteRenderer>().enabled = true;
             _target.localPosition = _magicOrigem.position;
             _magic.transform.localPosition = _magicOrigem.position;
-            _magic.transform.localScale = _magicOrigem.localScale * _magicController.Charging;
+            //_magic.transform.localScale = _magicOrigem.localScale * _magicController.Charging;
             if (_magicOrigem.localScale.x > 0)
             {
                 _target.position += new Vector3(3, 0, 0);
@@ -62,20 +63,14 @@ public class MagicController : MonoBehaviour
             {
                 _target.position += new Vector3(-3, 0, 0);
             }
-            _magicController.Charging = 0;
+            //_magicController.Charging = 0;
             //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
     }
 
-    public void ChangeCharginValue(MagicEnum magic, int charging)
-    {
-        if (magic.Equals(_magicType))
-        {
-            Debug.Log("ChangeCharginValue" + MagicEnum.Fire + "Iniciando aparição da Magia");
-            _charging = charging;
-        }
-    }
     public float step;
+
+    public bool IsStoppedAttack { get => _isStoppedAttack; set => _isStoppedAttack = value; }
 
     private void Update()
     {

@@ -12,31 +12,58 @@ public class MagicCastController : MonoBehaviour
     [SerializeField] private Transform _originOfMagic;
     [SerializeField] private PlayerStatusController _playerStatusController;
     [SerializeField] private PlayerController _playerController;
-    [SerializeField] private float _charging = 1;
-    public float totalCharge = 3;
-    public float totalChargeTime = 2;
 
     public Action<MagicEnum> OnplayerCastMagicByBtn;
     public Action<MagicEnum, int> OnplayerCastMagicChargindValue;
+
     public Action<bool> OnplayerChargind;
 
-    [SerializeField] private bool _isCharging;
+    [SerializeField] private float _chargingRate = 1.0f;
+    [SerializeField] private float[] _chargingStages = { 3.0f, 5.0f, 7.0f };
+
+
+    //remover serializableFIld
+    [SerializeField] private bool _isCharging = false;
+    [SerializeField] private float _charging = 0.0f;
+    [SerializeField] private float _charge = 1.0f;
 
     private void Awake()
     {
         _playerController = transform.parent.GetComponent<PlayerController>();
     }
 
-    public float Charging { get => _charging; set => _charging = value; }
+    public float Charging { get => _charging;}
 
     private void OnEnable()
     {
         _playerController.OnplayerFlip += Flip;
+        StopMagic.OnMagicStop += StopMagicAction;
     }
 
     private void OnDisable()
     {
         _playerController.OnplayerFlip -= Flip;
+    }
+    private void Update()
+    {
+        if (_isCharging)
+        {
+            _charging += Time.deltaTime * _chargingRate;
+            for (int i = 0; i < _chargingStages.Length; i++)
+            {
+                if (_charging >= _chargingStages[i])
+                {
+                    _charge = _chargingStages[i];
+                }
+            }
+            if (_charge == _chargingStages[_chargingStages.Length - 1])
+            {
+                _isCharging = false;
+            }
+            if(_charge > 0)
+                _magicFire.transform.localScale = new Vector3(_charge, _charge, 1);//_originOfMagic.localScale;
+        }
+        
     }
 
     public void BtnChargingDown()
@@ -44,36 +71,27 @@ public class MagicCastController : MonoBehaviour
         _isCharging = true;
         OnplayerChargind?.Invoke(_isCharging);
     }       
-
-    public void BtnCastFire()
-    {
-        _magicFire.transform.GetChild(0).localScale = Vector3.one;
-        _isCharging = false;
-        if (Charging > 5)
-            Charging = 3;
-        _magicFire.transform.GetChild(0).localScale *= Charging;
-        OnplayerCastMagicByBtn?.Invoke(MagicEnum.Fire);
-        OnplayerCastMagicChargindValue?.Invoke(MagicEnum.Fire, (int) Charging);
-        Debug.Log("Dispara Fire Iniciado Pelo BTN");
-        Charging = 0;
-    }
     public void BtnCastMagicByName(String name)
     {
+        _playerController.IsAttacking = true;
         MagicEnum magicEnum;
         Enum.TryParse<MagicEnum>(name, out magicEnum);
 
         _isCharging = false;
-        if (Charging > 5)
-            Charging = 3;
+        _charging = 0.0f;
+        _charge = 1.0f;
+
+        OnplayerChargind?.Invoke(_isCharging);
         OnplayerCastMagicByBtn?.Invoke(magicEnum);
-        OnplayerCastMagicChargindValue?.Invoke(magicEnum, (int)Charging);
-        Debug.Log("Dispara name Iniciado Pelo BTN"+ name);
+        //OnplayerCastMagicChargindValue?.Invoke(magicEnum, (int)Charging);
+        Debug.Log("Dispara name Iniciado Pelo BTN"+ name +" Chaging"+ Charging);
     }
     public void CastFire()
     {
         
         _magicFire.transform.position = _originOfMagic.position;
-        _magicFire.transform.localScale = _originOfMagic.localScale;
+        Debug.Log(_charge);
+        //_magicFire.transform.localScale = new Vector3(_charge, _charge, 1);//_originOfMagic.localScale;
         _magicFire.gameObject.SetActive(true);
         Debug.Log("Dispara Fire Mafia FIre Iniciada");
 
@@ -102,18 +120,10 @@ public class MagicCastController : MonoBehaviour
             _originOfMagic.transform.localScale = new Vector3(1, 1, 1);
         }
     }
-    private void Update()
+    private void StopMagicAction()
     {
-        
-        if (_isCharging == (true))
-        {
-            Charging += Time.deltaTime * ((totalCharge - 1) / totalChargeTime);
-        }
-        Charging = Mathf.Clamp(Charging, 1, totalCharge);
-
+        _playerController.IsAttacking = false;
     }
-
-
 }
 public enum MagicEnum
 {

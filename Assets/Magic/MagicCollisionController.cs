@@ -15,7 +15,6 @@ public class MagicCollisionController : MonoBehaviour
     {
         if (collision.transform.CompareTag("Enemy"))
         {
-            Debug.Log(collision.transform.tag + "OPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             _magicStatus.OnMagicalCollision?.Invoke(_magicStatus, collision.transform.GetComponent<EnemyStatus>());
         }
     }

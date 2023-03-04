@@ -27,7 +27,7 @@ public class MagicIceController : MonoBehaviour
     private void OnEnable()
     {
         _scaleBackup = _iceMagic.transform.localScale;
-        _iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
+        //_iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation += CastIce;
         _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
     }
@@ -39,7 +39,7 @@ public class MagicIceController : MonoBehaviour
 
     private void OnDisable()
     {
-        _iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
+        //_iceMagic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation -= CastIce;
         _magicController.OnplayerCastMagicChargindValue -= ChangeCharginValue;
 
@@ -65,7 +65,7 @@ public class MagicIceController : MonoBehaviour
             {
                 _target.position += new Vector3(-3, 0, 0);
             }
-            _magicController.Charging = 0;
+            //_magicController.Charging = 0;
             //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
     }

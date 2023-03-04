@@ -13,7 +13,6 @@ public class FxEnemyController : MonoBehaviour
 
     public void FXDamagePlay()
     {
-        Debug.Log("FXFXFX");
         _animator.enabled = true;
         _animator.transform.GetComponent<SpriteRenderer>().enabled = true;
         foreach (SpriteRenderer item in _spriteEnemy)

@@ -41,7 +41,7 @@ Material:
     - _OutlineDown: 2
     - _OutlineLeft: 2
     m_Colors:
-    - _OutlineColor: {r: 1, g: 0.058819972, b: 0, a: 1}
+    - _OutlineColor: {r: 0.42274833, g: 0.7169812, b: 0.7135196, a: 1}
     - _OutlineThickness: {r: 0.03, g: -0.03, b: 0, a: 0}
     - _OutlineThicknessX: {r: 0.03, g: 0.03, b: 0, a: 0}
     - _OutlineThicknessY: {r: 0.03, g: 0.03, b: 0, a: 0}

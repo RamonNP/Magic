@@ -21,7 +21,7 @@ public class MagicFireController : MonoBehaviour
     private void OnEnable()
     {
         _scaleBackup = _magic.transform.localScale;
-        _magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
+        //_magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop += StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation += CastMagic;
         _magicController.OnplayerCastMagicChargindValue += ChangeCharginValue;
     }
@@ -33,7 +33,7 @@ public class MagicFireController : MonoBehaviour
 
     private void OnDisable()
     {
-        _magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
+        //_magic.transform.GetChild(0).GetComponent<StopMagic>().OnMagicStop -= StopMagicAction;
         _animatorController.OnplayerCastMagicByAnimation -= CastMagic;
         _magicController.OnplayerCastMagicChargindValue -= ChangeCharginValue;
 
@@ -58,7 +58,7 @@ public class MagicFireController : MonoBehaviour
             {
                 _target.position += new Vector3(-3, 0, 0);
             }
-            _magicController.Charging = 0;
+            //_magicController.Charging = 0;
             //StartCoroutine(TimeMagicOff(2f, _iceMagic));
         }
     }
