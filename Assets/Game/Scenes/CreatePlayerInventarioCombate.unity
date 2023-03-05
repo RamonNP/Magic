@@ -21142,6 +21142,13 @@ MonoBehaviour:
     _runeBonus: 0
   _inventoryController: {fileID: 1331341576}
   _powerRuneListEquiped: []
+  _weaponEquiped:
+    name: 
+    damage: 0
+    attackSpeed: 0
+    range: 0
+    sprite: {fileID: 0}
+    category: 0
   _ATKText: {fileID: 711002191}
   _DefText: {fileID: 551300099}
   _manaCurrentBar: {fileID: 520239153}
