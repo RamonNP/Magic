@@ -13,6 +13,7 @@ public class PlayerStatusController : MonoBehaviour
     [SerializeField] private InventoryController _inventoryController;
     [SerializeField] private List<PowerRune> _powerRuneListEquiped;
     [SerializeField] private Weapon _weaponEquiped;
+    [SerializeField] private List<Transform> _itensEquipmentSpritePlayer;
 
 
     [Header("UI Text Config")]
@@ -77,6 +78,16 @@ public class PlayerStatusController : MonoBehaviour
         {
             //Debug.Log("EquipItem - " + item.NameItem);
             attributes.EquipItem(item);
+            if(item.TypeItem.Equals(TypeItem.Armor))
+            {
+                Sprite[] allSprites = Resources.LoadAll<Sprite>("ItensInventory/" + item.TypeItem + "/" + item.SpriteItem.ToString());
+                _itensEquipmentSpritePlayer[0].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+                _itensEquipmentSpritePlayer[1].GetComponent<SpriteRenderer>().sprite = allSprites[1];
+                _itensEquipmentSpritePlayer[2].GetComponent<SpriteRenderer>().sprite = allSprites[2];
+                _itensEquipmentSpritePlayer[3].GetComponent<SpriteRenderer>().sprite = allSprites[3];
+                _itensEquipmentSpritePlayer[4].GetComponent<SpriteRenderer>().sprite = allSprites[4];
+            }
+
         }
     }    
     private void CastMana(float amount)
@@ -104,6 +115,15 @@ public class PlayerStatusController : MonoBehaviour
             Debug.Log("UnequipItem - " + item.NameItem);
 
            attributes.UnequipItem(item);
+            if (item.TypeItem.Equals(TypeItem.Armor))
+            {
+                Sprite[] allSprites = Resources.LoadAll<Sprite>("ItensInventory/" + item.TypeItem + "/0");
+                _itensEquipmentSpritePlayer[0].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+                _itensEquipmentSpritePlayer[1].GetComponent<SpriteRenderer>().sprite = allSprites[1];
+                _itensEquipmentSpritePlayer[2].GetComponent<SpriteRenderer>().sprite = allSprites[2];
+                _itensEquipmentSpritePlayer[3].GetComponent<SpriteRenderer>().sprite = allSprites[3];
+                _itensEquipmentSpritePlayer[4].GetComponent<SpriteRenderer>().sprite = allSprites[4];
+            }
         }
     }
 
