@@ -12,7 +12,6 @@ public class PlayerStatusController : MonoBehaviour
     [SerializeField] private Attributes attributes;
     [SerializeField] private InventoryController _inventoryController;
     [SerializeField] private List<PowerRune> _powerRuneListEquiped;
-    [SerializeField] private Weapon _weaponEquiped;
     [SerializeField] private List<Transform> _itensEquipmentSpritePlayer;
 
 
@@ -50,7 +49,7 @@ public class PlayerStatusController : MonoBehaviour
     }
     private void Update()
     {
-        _ATKText.text = "ATK:"+attributes.ATK.ToString();
+        _ATKText.text = "M-POWER:"+attributes.AtkMagicPower.ToString();
         _DefText.text = "DEF:" + attributes.DEF.ToString();
         if (Input.GetKeyDown(KeyCode.S))
         {
@@ -76,18 +75,45 @@ public class PlayerStatusController : MonoBehaviour
         }        
         if(!item.TypeItem.Equals(TypeItem.Rune) && !item.TypeItem.Equals(TypeItem.None) && !item.TypeItem.Equals(TypeItem.Alls))
         {
+            Debug.Log("EquipItem - " + item.NameItem);
             //Debug.Log("EquipItem - " + item.NameItem);
             attributes.EquipItem(item);
-            if(item.TypeItem.Equals(TypeItem.Armor))
+            ChangeSpriteEquipArmor(item);
+
+        }
+
+        void ChangeSpriteEquipArmor(Item item)
+        {
+            Sprite[] allSprites = Resources.LoadAll<Sprite>("ItensInventory/" + item.TypeItem + "/" + item.SpriteItem.ToString());
+            if (item.TypeItem.Equals(TypeItem.Armor))
             {
-                Sprite[] allSprites = Resources.LoadAll<Sprite>("ItensInventory/" + item.TypeItem + "/" + item.SpriteItem.ToString());
                 _itensEquipmentSpritePlayer[0].GetComponent<SpriteRenderer>().sprite = allSprites[0];
                 _itensEquipmentSpritePlayer[1].GetComponent<SpriteRenderer>().sprite = allSprites[1];
                 _itensEquipmentSpritePlayer[2].GetComponent<SpriteRenderer>().sprite = allSprites[2];
                 _itensEquipmentSpritePlayer[3].GetComponent<SpriteRenderer>().sprite = allSprites[3];
                 _itensEquipmentSpritePlayer[4].GetComponent<SpriteRenderer>().sprite = allSprites[4];
+            } 
+            else if (item.TypeItem.Equals(TypeItem.Head))
+            {
+                _itensEquipmentSpritePlayer[5].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+            } 
+            else if (item.TypeItem.Equals(TypeItem.Shield))
+            {
+                _itensEquipmentSpritePlayer[6].gameObject.SetActive(true);
+                _itensEquipmentSpritePlayer[7].gameObject.SetActive(false);
+                _itensEquipmentSpritePlayer[6].GetComponent<SpriteRenderer>().sprite = allSprites[0];
             }
-
+            else if (item.TypeItem.Equals(TypeItem.MagicItem))
+            {
+                _itensEquipmentSpritePlayer[6].gameObject.SetActive(false);
+                _itensEquipmentSpritePlayer[7].gameObject.SetActive(true);
+                _itensEquipmentSpritePlayer[7].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+            }             
+            else if (item.TypeItem.Equals(TypeItem.Staff) || item.TypeItem.Equals(TypeItem.Bow) || item.TypeItem.Equals(TypeItem.Sword))
+            {
+                _itensEquipmentSpritePlayer[8].gameObject.SetActive(true);
+                _itensEquipmentSpritePlayer[8].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+            } 
         }
     }    
     private void CastMana(float amount)
@@ -114,16 +140,35 @@ public class PlayerStatusController : MonoBehaviour
         {
             Debug.Log("UnequipItem - " + item.NameItem);
 
-           attributes.UnequipItem(item);
-            if (item.TypeItem.Equals(TypeItem.Armor))
-            {
-                Sprite[] allSprites = Resources.LoadAll<Sprite>("ItensInventory/" + item.TypeItem + "/0");
-                _itensEquipmentSpritePlayer[0].GetComponent<SpriteRenderer>().sprite = allSprites[0];
-                _itensEquipmentSpritePlayer[1].GetComponent<SpriteRenderer>().sprite = allSprites[1];
-                _itensEquipmentSpritePlayer[2].GetComponent<SpriteRenderer>().sprite = allSprites[2];
-                _itensEquipmentSpritePlayer[3].GetComponent<SpriteRenderer>().sprite = allSprites[3];
-                _itensEquipmentSpritePlayer[4].GetComponent<SpriteRenderer>().sprite = allSprites[4];
-            }
+            attributes.UnequipItem(item);
+            ChangeSpriteUnEquipArmor(item);
+        }
+
+    }
+
+    private void ChangeSpriteUnEquipArmor(Item item)
+    {
+        Sprite[] allSprites = Resources.LoadAll<Sprite>("ItensInventory/" + item.TypeItem + "/0");
+        if (item.TypeItem.Equals(TypeItem.Armor))
+        {
+            _itensEquipmentSpritePlayer[0].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+            _itensEquipmentSpritePlayer[1].GetComponent<SpriteRenderer>().sprite = allSprites[1];
+            _itensEquipmentSpritePlayer[2].GetComponent<SpriteRenderer>().sprite = allSprites[2];
+            _itensEquipmentSpritePlayer[3].GetComponent<SpriteRenderer>().sprite = allSprites[3];
+            _itensEquipmentSpritePlayer[4].GetComponent<SpriteRenderer>().sprite = allSprites[4];
+        }
+        else if (item.TypeItem.Equals(TypeItem.Head))
+        {
+            _itensEquipmentSpritePlayer[5].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+        }
+        else if (item.TypeItem.Equals(TypeItem.Shield) || item.TypeItem.Equals(TypeItem.MagicItem))
+        {
+            _itensEquipmentSpritePlayer[6].gameObject.SetActive(false);
+            _itensEquipmentSpritePlayer[7].gameObject.SetActive(false);
+        }
+        else if (item.TypeItem.Equals(TypeItem.Staff) || item.TypeItem.Equals(TypeItem.Bow) || item.TypeItem.Equals(TypeItem.Sword))
+        {
+            _itensEquipmentSpritePlayer[8].gameObject.SetActive(false);
         }
     }
 

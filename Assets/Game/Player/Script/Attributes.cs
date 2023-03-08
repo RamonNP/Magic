@@ -15,9 +15,13 @@ public class Attributes
     public int LifeBase = 100;     
     private int _lifePerLevel = 25;     
     private int _manaPerLevel = 50;     
-    public int ATK ;
+    public int AtkMagicPower;
+    public int AtkPhysicalPower;
+    public int AtkDistanceFight;
     public int DEF ;    
-    public int BonusEquipmentATK;
+    public int BonusEquipmentMagicPower;
+    public int BonusEquipmentPhysicalPower;
+    public int BonusEquipmentDistanceFight;
     public int BonusEquipmentDEF;
     public bool BufferArmorComplet;
     public int BufferItemArmor;
@@ -28,15 +32,27 @@ public class Attributes
 
     public void Initialize()
     {
-        if (ATK == 0)
+        if (AtkMagicPower == 0)
         {
-            ATK = 100;
+            AtkMagicPower = 100;
+        }        
+        if (AtkPhysicalPower == 0)
+        {
+            AtkPhysicalPower = 100;
         }
+        if (AtkDistanceFight == 0)
+        {
+            AtkDistanceFight = 100;
+        }
+
+
         if (DEF == 0)
         {
             DEF = 50;
         }
-        BonusEquipmentATK = 0;
+        BonusEquipmentDistanceFight = 0;
+        BonusEquipmentMagicPower = 0;
+        BonusEquipmentPhysicalPower = 0;
         BonusEquipmentDEF = 0;
         LifeMax = LifeBase + (_lifePerLevel * Level);
         ManaMax = ManaBase + (_manaPerLevel * Level);
@@ -46,23 +62,36 @@ public class Attributes
     }
     public void EquipItem(Item item)
     {
-        BonusEquipmentATK += item.EquipmentStatus.ATK;
-        BonusEquipmentDEF += item.EquipmentStatus.DEF;
+        BonusEquipmentDistanceFight += item.EquipmentStatus.DistanceFight;
+        BonusEquipmentMagicPower += item.EquipmentStatus.MagicPower;
+        BonusEquipmentPhysicalPower += item.EquipmentStatus.PhysicalPower;
+        BonusEquipmentDEF += item.EquipmentStatus.Defense;
         CalculateATK();
     }
 
 
     public void UnequipItem(Item item)
     {
-        BonusEquipmentATK -= item.EquipmentStatus.ATK;
-        BonusEquipmentDEF -= item.EquipmentStatus.DEF;
+        BonusEquipmentDistanceFight -= item.EquipmentStatus.DistanceFight;
+        BonusEquipmentMagicPower -= item.EquipmentStatus.MagicPower;
+        BonusEquipmentPhysicalPower -= item.EquipmentStatus.PhysicalPower;
+        BonusEquipmentDEF -= item.EquipmentStatus.Defense;
         CalculateATK();
     }    
     public void CalculateATK()
     {
-        ATK = ATKBase;
-        ATK += (ATKBase * BonusEquipmentATK) / 100;
-        ATK += (ATKBase * _runeBonus) / 100;
+        AtkMagicPower = ATKBase;
+        AtkMagicPower += (ATKBase * BonusEquipmentMagicPower) / 100;
+        AtkMagicPower += (ATKBase * _runeBonus) / 100;
+
+        AtkPhysicalPower = ATKBase;
+        AtkPhysicalPower += (ATKBase * BonusEquipmentPhysicalPower) / 100;
+        AtkPhysicalPower += (ATKBase * _runeBonus) / 100;
+
+        AtkDistanceFight = ATKBase;
+        AtkDistanceFight += (ATKBase * BonusEquipmentDistanceFight) / 100;
+        AtkDistanceFight += (ATKBase * _runeBonus) / 100;
+
         CalculateDEF();
     }    
     private void CalculateDEF()

@@ -445,8 +445,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &12602871
 CanvasRenderer:
@@ -635,8 +639,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!1 &34751849
 GameObject:
@@ -21305,8 +21313,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &149805817
 CanvasRenderer:
@@ -21423,7 +21435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &187762171
 GameObject:
@@ -27187,7 +27199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &274453344
 GameObject:
@@ -27766,8 +27778,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &308173591
 CanvasRenderer:
@@ -29034,7 +29050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &454157245
 GameObject:
@@ -29118,7 +29134,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &456155198
 GameObject:
@@ -29410,8 +29426,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &456155207
 CanvasRenderer:
@@ -29560,9 +29580,13 @@ MonoBehaviour:
     DEFBase: 50
     ManaBase: 100
     LifeBase: 100
-    ATK: 0
+    AtkMagicPower: 0
+    AtkPhysicalPower: 0
+    AtkDistanceFight: 0
     DEF: 0
-    BonusEquipmentATK: 0
+    BonusEquipmentMagicPower: 0
+    BonusEquipmentPhysicalPower: 0
+    BonusEquipmentDistanceFight: 0
     BonusEquipmentDEF: 0
     BufferArmorComplet: 0
     BufferItemArmor: 0
@@ -29572,13 +29596,6 @@ MonoBehaviour:
     _runeBonus: 0
   _inventoryController: {fileID: 1331341576}
   _powerRuneListEquiped: []
-  _weaponEquiped:
-    name: 
-    damage: 0
-    attackSpeed: 0
-    range: 0
-    sprite: {fileID: 0}
-    category: 0
   _itensEquipmentSpritePlayer: []
   _ATKText: {fileID: 711002191}
   _DefText: {fileID: 551300099}
@@ -29759,8 +29776,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!1 &485941347
 GameObject:
@@ -29857,8 +29878,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!1 &498685867
 GameObject:
@@ -31352,8 +31377,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &526974177
 CanvasRenderer:
@@ -31521,7 +31550,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541001869
 GameObject:
@@ -31632,6 +31661,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546474221}
   m_CullTransparentMesh: 1
+--- !u!1 &548413848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 548413849}
+  - component: {fileID: 548413850}
+  m_Layer: 0
+  m_Name: MagicItens
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &548413849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548413848}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.346, y: -0.177, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1369916738}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &548413850
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548413848}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1124658509
+  m_SortingLayer: 2
+  m_SortingOrder: 60
+  m_Sprite: {fileID: 21300000, guid: eba3dcca18029444fa2a008af52b6152, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &551300097
 GameObject:
   m_ObjectHideFlags: 0
@@ -31904,9 +32017,13 @@ MonoBehaviour:
     DEFBase: 50
     ManaBase: 100
     LifeBase: 100
-    ATK: 0
+    AtkMagicPower: 0
+    AtkPhysicalPower: 0
+    AtkDistanceFight: 0
     DEF: 0
-    BonusEquipmentATK: 0
+    BonusEquipmentMagicPower: 0
+    BonusEquipmentPhysicalPower: 0
+    BonusEquipmentDistanceFight: 0
     BonusEquipmentDEF: 0
     BufferArmorComplet: 0
     BufferItemArmor: 0
@@ -31916,19 +32033,16 @@ MonoBehaviour:
     _runeBonus: 0
   _inventoryController: {fileID: 1331341576}
   _powerRuneListEquiped: []
-  _weaponEquiped:
-    name: 
-    damage: 0
-    attackSpeed: 0
-    range: 0
-    sprite: {fileID: 0}
-    category: 0
   _itensEquipmentSpritePlayer:
   - {fileID: 1285177509}
   - {fileID: 91996156}
   - {fileID: 91996156}
   - {fileID: 1369916738}
   - {fileID: 1318572566}
+  - {fileID: 920731147}
+  - {fileID: 1506573562}
+  - {fileID: 548413849}
+  - {fileID: 1433592698}
   _ATKText: {fileID: 711002191}
   _DefText: {fileID: 551300099}
   _manaCurrentBar: {fileID: 520239153}
@@ -31946,8 +32060,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _magicController: {fileID: 2007939297}
-  _magicEvent: {fileID: 3716781775501242356}
-  _animator: {fileID: 3716781775501242348}
+  _magicEvent: {fileID: 766130248}
+  _animator: {fileID: 766130249}
   _playerController: {fileID: 0}
   _lastAnimation: 0
 --- !u!114 &567488044
@@ -32169,7 +32283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &642249038
 GameObject:
@@ -32695,8 +32809,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &646537186
 CanvasRenderer:
@@ -32798,7 +32916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &665590345
 GameObject:
@@ -34189,8 +34307,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &742889689
 CanvasRenderer:
@@ -34314,9 +34436,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1333671183053724, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+    - target: {fileID: 1259076104377094, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1322112450419278, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333671183053724, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1404473806768274, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_IsActive
@@ -34345,6 +34475,50 @@ PrefabInstance:
     - target: {fileID: 1810350941467426, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013213978386950, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.72604686
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013213978386950, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.68764526
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013213978386950, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -86.888
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026926761965756, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.71393764
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026926761965756, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7002094
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026926761965756, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103868505016152, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.43868595
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103868505016152, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.2887666
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103868505016152, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.18266508
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103868505016152, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.9831752
+      objectReference: {fileID: 0}
+    - target: {fileID: 4103868505016152, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4162982119964386, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_RootOrder
@@ -34390,6 +34564,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4194223114415712, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.09680132
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194223114415712, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194223114415712, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194223114415712, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.99530375
+      objectReference: {fileID: 0}
+    - target: {fileID: 4194223114415712, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -168.89
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273162893330582, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9959806
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273162893330582, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.08956907
+      objectReference: {fileID: 0}
+    - target: {fileID: 4273162893330582, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279809273778912, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99965733
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279809273778912, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.026176924
+      objectReference: {fileID: 0}
+    - target: {fileID: 4279809273778912, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639484414550862, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.98927236
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639484414550862, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.14608298
+      objectReference: {fileID: 0}
+    - target: {fileID: 4639484414550862, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 16.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4982208058779024, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 91.37877
+      objectReference: {fileID: 0}
     - target: {fileID: 212028938550151100, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -34402,6 +34636,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1124658509
       objectReference: {fileID: 0}
+    - target: {fileID: 212106109824928798, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e23ca2424ed812347a2b889b9c26100d, type: 3}
     - target: {fileID: 212106109824928798, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_SortingLayer
       value: 2
@@ -34448,7 +34686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212313018840298170, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_SortingOrder
-      value: 30
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 212313018840298170, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_SortingLayerID
@@ -34476,7 +34714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212896874184939776, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_SortingOrder
-      value: 30
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 212896874184939776, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
       propertyPath: m_SortingLayerID
@@ -34584,6 +34822,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a13dc0876be8bb46bc1f12c0dfe6a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &766130249 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95009051642218124, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+  m_PrefabInstance: {fileID: 766130243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &773840244
 GameObject:
   m_ObjectHideFlags: 0
@@ -34874,8 +35117,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &773840253
 CanvasRenderer:
@@ -35175,8 +35422,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &780236811
 CanvasRenderer:
@@ -35507,8 +35758,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &784683991
 CanvasRenderer:
@@ -35779,7 +36034,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &801470531 stripped
 Animator:
@@ -36359,8 +36614,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &824489210
 CanvasRenderer:
@@ -36552,7 +36811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &876817271
 GameObject:
@@ -36691,7 +36950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &905771838
 GameObject:
@@ -36790,7 +37049,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &914456710
 GameObject:
@@ -36823,7 +37082,7 @@ Transform:
   - {fileID: 235851017}
   - {fileID: 1785355190}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &917422090
 GameObject:
@@ -36858,6 +37117,11 @@ Transform:
   m_Father: {fileID: 515161006}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -123.06102}
+--- !u!4 &920731147 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4736064224343072, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+  m_PrefabInstance: {fileID: 766130243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &939587028
 GameObject:
   m_ObjectHideFlags: 0
@@ -42044,7 +42308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &988383482
 GameObject:
@@ -43173,8 +43437,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1105921321
 CanvasRenderer:
@@ -43244,7 +43512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &1130811836
 GameObject:
@@ -43397,6 +43665,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135906502}
   m_CullTransparentMesh: 1
+--- !u!1 &1143071674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1143071675}
+  - component: {fileID: 1143071676}
+  m_Layer: 0
+  m_Name: Arrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1143071675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143071674}
+  m_LocalRotation: {x: -0, y: -0, z: -0.8274191, w: 0.5615849}
+  m_LocalPosition: {x: 0.59, y: -0.19, z: -0.008}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1369916738}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -111.669}
+--- !u!212 &1143071676
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1143071674}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1124658509
+  m_SortingLayer: 2
+  m_SortingOrder: 60
+  m_Sprite: {fileID: 21300000, guid: 1b9931b36e4c09d47bf0fd77625a7050, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1143144512
 GameObject:
   m_ObjectHideFlags: 0
@@ -43687,8 +44039,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1143144521
 CanvasRenderer:
@@ -44756,8 +45112,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!1 &1262464921
 GameObject:
@@ -45049,8 +45409,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1262464930
 CanvasRenderer:
@@ -45350,8 +45714,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1277737509
 CanvasRenderer:
@@ -45656,8 +46024,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1285576333
 CanvasRenderer:
@@ -46071,8 +46443,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: R02
     NameItem: Rune Ice
@@ -46086,8 +46462,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: R03
     NameItem: Rune Fly
@@ -46101,8 +46481,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: B01
     NameItem: Boot
@@ -46116,8 +46500,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: B02
     NameItem: Boot
@@ -46131,8 +46519,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: H01
     NameItem: Head
@@ -46146,8 +46538,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: H02
     NameItem: Head
@@ -46161,8 +46557,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: A01
     NameItem: Armor
@@ -46176,8 +46576,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: A01
     NameItem: Armor
@@ -46191,8 +46595,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   - IdItem: S01
     NameItem: Shield
@@ -46206,8 +46614,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
   _itensInventorySlots:
   - {fileID: 899439230}
@@ -46452,8 +46864,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
+--- !u!1001 &1369013779
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1912697344462830, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_Name
+      value: Archer 02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1977700297401860, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4327051903030352, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -7.5421314
+      objectReference: {fileID: 0}
+    - target: {fileID: 4430636987092370, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -101.18535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4446324792787672, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.21304548
+      objectReference: {fileID: 0}
+    - target: {fileID: 4452315968043544, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -104.72385
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.8973188
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.9474492
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4552458158856062, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4844581016320084, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 96.766815
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de269e1a5d0f87f49af3c0275a07e948, type: 3}
 --- !u!4 &1369916738 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4757427033858456, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
@@ -46907,6 +47400,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1433592698 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4435542466177940, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+  m_PrefabInstance: {fileID: 766130243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1435739976
 GameObject:
   m_ObjectHideFlags: 0
@@ -47357,8 +47855,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1439894138
 CanvasRenderer:
@@ -47995,8 +48497,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1503046885
 CanvasRenderer:
@@ -48006,6 +48512,90 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1503046876}
   m_CullTransparentMesh: 1
+--- !u!1 &1506573561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1506573562}
+  - component: {fileID: 1506573563}
+  m_Layer: 0
+  m_Name: Shield
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1506573562
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506573561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1369916738}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1506573563
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506573561}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1124658509
+  m_SortingLayer: 2
+  m_SortingOrder: 60
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1515944487
 GameObject:
   m_ObjectHideFlags: 0
@@ -48041,7 +48631,7 @@ Transform:
   - {fileID: 1470783755}
   - {fileID: 482181049}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1515944489
 MonoBehaviour:
@@ -48454,7 +49044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &1555918006
 GameObject:
@@ -48551,8 +49141,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!1 &1557802642
 GameObject:
@@ -49203,8 +49797,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1578513078
 CanvasRenderer:
@@ -50134,8 +50732,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!1 &1639066883
 GameObject:
@@ -50638,6 +51240,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1665806326}
   m_CullTransparentMesh: 1
+--- !u!4 &1666666490 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4639484414550862, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
+  m_PrefabInstance: {fileID: 766130243}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1674655611
 GameObject:
   m_ObjectHideFlags: 0
@@ -55783,7 +56390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &1715614477
 GameObject:
@@ -60963,8 +61570,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1739060555
 CanvasRenderer:
@@ -61534,8 +62145,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1770952908
 CanvasRenderer:
@@ -61940,7 +62555,7 @@ Transform:
   m_Children:
   - {fileID: 939587029}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1839158317
 MonoBehaviour:
@@ -62612,7 +63227,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1902700609 stripped
 SpriteRenderer:
@@ -63321,8 +63936,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1953422121
 CanvasRenderer:
@@ -63627,8 +64246,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &1975657268
 CanvasRenderer:
@@ -63682,6 +64305,90 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 212834458726885724, guid: c445cf3bbc242254dab104c4a4e6498c, type: 3}
   m_PrefabInstance: {fileID: 1461104671}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1994257543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1994257544}
+  - component: {fileID: 1994257545}
+  m_Layer: 0
+  m_Name: Bow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1994257544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994257543}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.34, y: 0.785, z: -0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1666666490}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1994257545
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994257543}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 1124658509
+  m_SortingLayer: 2
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: e23ca2424ed812347a2b889b9c26100d, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1996485889
 GameObject:
   m_ObjectHideFlags: 0
@@ -64385,9 +65092,13 @@ MonoBehaviour:
     DEFBase: 50
     ManaBase: 100
     LifeBase: 100
-    ATK: 0
+    AtkMagicPower: 0
+    AtkPhysicalPower: 0
+    AtkDistanceFight: 0
     DEF: 0
-    BonusEquipmentATK: 0
+    BonusEquipmentMagicPower: 0
+    BonusEquipmentPhysicalPower: 0
+    BonusEquipmentDistanceFight: 0
     BonusEquipmentDEF: 0
     BufferArmorComplet: 0
     BufferItemArmor: 0
@@ -64543,7 +65254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &2070382323
 GameObject:
@@ -65195,7 +65906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1 &2099276450
 GameObject:
@@ -65780,8 +66491,12 @@ MonoBehaviour:
       _XPBase: 100
       Magics: 
     EquipmentStatus:
-      ATK: 0
-      DEF: 0
+      _life: 0
+      _mana: 0
+      _physicalPower: 0
+      _magicPower: 0
+      _defense: 0
+      _distanceFight: 0
       EquipmentSet: 0
 --- !u!222 &2112627925
 CanvasRenderer:
@@ -66149,7 +66864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad72240ac37d824ca7cc699cb404582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeSlotItem: 8
+  _typeSlotItem: 9
   _typeListItem: 0
 --- !u!1001 &2148071511826807173
 PrefabInstance:

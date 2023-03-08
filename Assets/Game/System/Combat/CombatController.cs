@@ -26,11 +26,14 @@ public class CombatController : MonoBehaviour
         }
     }
 
-    private void CombatCalculate(MagicStatus magicEnum, EnemyStatus enemyStatus)
+    private void CombatCalculate(MagicStatus magicEnum, EnemyStatus enemyStatus, TypeItem TypeItem)
     {
-        
-        int damage = CalculateDamage(magicEnum.PlayerStatusController.Attributes.ATK, enemyStatus.Attribute.DEF);
-        Debug.Log("ATK: " + magicEnum.PlayerStatusController.Attributes.ATK +" DEF"+ enemyStatus.Attribute.DEF);
+        int damage = 0;
+        if (TypeItem.Equals(TypeItem.Staff))
+        {
+            damage = CalculateDamage(magicEnum.PlayerStatusController.Attributes.AtkMagicPower, enemyStatus.Attribute.DEF);
+            Debug.Log("ATK: " + magicEnum.PlayerStatusController.Attributes.AtkMagicPower + " DEF"+ enemyStatus.Attribute.DEF);
+        }
         if (damage > 0)
         {
             ShowDamageText(damage, enemyStatus.transform);

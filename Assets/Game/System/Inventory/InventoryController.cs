@@ -81,9 +81,13 @@ public class InventoryController : MonoBehaviour
 
             Transform auxParent = _mouseItem.transform.parent;
             TypeSlot type = button.transform.parent.GetComponent<TypeSlot>();
-                Debug.Log("type.TypeSlotItem "+ type.TypeSlotItem + " _mouseItem.GetComponent<ItemSlot>() "+ _mouseItem.GetComponent<ItemSlot>().Item.TypeItem);
-            if ((type.TypeSlotItem.Equals(TypeItem.Alls) || type.TypeSlotItem.Equals(_mouseItem.GetComponent<ItemSlot>().Item.TypeItem)) && getItemSlot(type).Item.TypeItem.Equals(TypeItem.None))
+
+            if ((type.TypeSlotItem.Equals(TypeItem.Alls)
+                || isShieldOrMagicItens(type)
+                || type.TypeSlotItem.Equals(_mouseItem.GetComponent<ItemSlot>().Item.TypeItem))
+                && getItemSlot(type).Item.TypeItem.Equals(TypeItem.None))
             {
+                Debug.Log("type.TypeSlotItem " + type.TypeSlotItem + " _mouseItem.GetComponent<ItemSlot>() " + _mouseItem.GetComponent<ItemSlot>().Item.TypeItem);
                 //set save Change Itens List
                 ChangeItemSlots(_mouseItem.transform.parent.GetComponent<TypeSlot>().TypeListItem, type.TypeListItem, _mouseItem.transform.GetComponent<ItemSlot>().Item);
                 if (type.TypeSlotItem.Equals(_mouseItem.GetComponent<ItemSlot>().Item.TypeItem))
@@ -96,7 +100,7 @@ public class InventoryController : MonoBehaviour
 
                 //set Slot Extract
                 RuneSlotController runeSlotController = button.transform.parent.GetComponent<RuneSlotController>();
-                if(runeSlotController != null)
+                if (runeSlotController != null)
                 {
                     ItemSlot itemSlotCurrent = _mouseItem.transform.GetComponent<ItemSlot>();
                     itemSlotCurrent.OnRuneEquiped += runeSlotController.SetItemSlot;
@@ -109,6 +113,15 @@ public class InventoryController : MonoBehaviour
             }
         }
     }
+
+    private bool isShieldOrMagicItens(TypeSlot type)
+    {
+        TypeItem currentItemTypeItem = _mouseItem.GetComponent<ItemSlot>().Item.TypeItem;
+        return ((type.TypeSlotItem.Equals(TypeItem.Shield)) 
+            && (currentItemTypeItem.Equals(TypeItem.Shield) 
+                    || currentItemTypeItem.Equals(TypeItem.MagicItem)));
+    }
+
     public ItemSlot getItemSlot(TypeSlot itemSlot)
     {
         return itemSlot.GetComponentInChildren<ItemSlot>();

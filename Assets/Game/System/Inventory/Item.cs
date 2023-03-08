@@ -61,8 +61,11 @@ public enum TypeItem
     Head,
     Boots,
     Shield,
+    MagicItem,
     Amulet,
-    Alls
+    Alls, 
+    Sword,
+    Bow
 }
 public enum TypeListItem
 {
