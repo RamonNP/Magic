@@ -14,6 +14,7 @@ namespace Platformer.Magic.Player
         [SerializeField] private GroundCheck _groundCheck;
         [SerializeField] private Vector2 _moveTarget;
         [SerializeField] private AnimatorController _animatorController;
+        [SerializeField] private DistanceFightingController _distanceFightingController;
 
         [SerializeField] private PlayerStatusController _playerStatusController;
         [SerializeField] private MagicCastController _magicController;
@@ -67,6 +68,16 @@ namespace Platformer.Magic.Player
             MovePlayerChat();
             JumpPlayer();
             Flip();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //_distanceFightingController.ShootArrow(ArrowType.RegularArrow);
+                _animatorController.ShootArrow();
+            }            
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                //_distanceFightingController.ShootArrow(ArrowType.RegularArrow);
+                _animatorController.HighShot();
+            }
         }
 
         private void Flip()

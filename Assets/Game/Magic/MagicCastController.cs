@@ -127,6 +127,7 @@ public class MagicCastController : MonoBehaviour
 }
 public enum MagicEnum
 {
+    None,
     Fire,
     Fireball,
     Shield,

@@ -13,6 +13,10 @@ public class PlayerStatusController : MonoBehaviour
     [SerializeField] private InventoryController _inventoryController;
     [SerializeField] private List<PowerRune> _powerRuneListEquiped;
     [SerializeField] private List<Transform> _itensEquipmentSpritePlayer;
+    [SerializeField] private Arrow _equipedArrow;
+    [SerializeField] private GameObject _weapomEquiped;
+    [SerializeField] private GameObject _bowEquiped;
+
 
 
     [Header("UI Text Config")]
@@ -20,6 +24,9 @@ public class PlayerStatusController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _DefText;
     [SerializeField] private RectTransform _manaCurrentBar;
     [SerializeField] private RectTransform _lifeCurrentBar;
+    [SerializeField] private GameObject _magicHud;
+    [SerializeField] private GameObject _warriorHud;
+    [SerializeField] private GameObject _distanceHud;
 
     private void Start()
     {
@@ -39,8 +46,6 @@ public class PlayerStatusController : MonoBehaviour
         {
             EquipedItem(item);
         }
-        CastMana(50);
-        LoseLife(50);
     }
 
     private void InitializeAtributes()
@@ -67,6 +72,10 @@ public class PlayerStatusController : MonoBehaviour
 
     private void EquipedItem(Item item)
     {
+        if ((item.TypeItem.Equals(TypeItem.Staff) || item.TypeItem.Equals(TypeItem.Bow) || item.TypeItem.Equals(TypeItem.Sword)))
+        {
+            ActiveHud(item);
+        }
         if (item.TypeItem.Equals(TypeItem.Rune))
         {
             //Debug.Log("EquipedRune " + item.TypeItem + "-" + item.NameItem +"-"+item.PowerRuneItem.MagicLevel);
@@ -75,11 +84,10 @@ public class PlayerStatusController : MonoBehaviour
         }        
         if(!item.TypeItem.Equals(TypeItem.Rune) && !item.TypeItem.Equals(TypeItem.None) && !item.TypeItem.Equals(TypeItem.Alls))
         {
-            Debug.Log("EquipItem - " + item.NameItem);
+            //Debug.Log("EquipItem - " + item.NameItem);
             //Debug.Log("EquipItem - " + item.NameItem);
             attributes.EquipItem(item);
             ChangeSpriteEquipArmor(item);
-
         }
 
         void ChangeSpriteEquipArmor(Item item)
@@ -108,14 +116,50 @@ public class PlayerStatusController : MonoBehaviour
                 _itensEquipmentSpritePlayer[6].gameObject.SetActive(false);
                 _itensEquipmentSpritePlayer[7].gameObject.SetActive(true);
                 _itensEquipmentSpritePlayer[7].GetComponent<SpriteRenderer>().sprite = allSprites[0];
-            }             
-            else if (item.TypeItem.Equals(TypeItem.Staff) || item.TypeItem.Equals(TypeItem.Bow) || item.TypeItem.Equals(TypeItem.Sword))
+            }  
+            else if(item.TypeItem.Equals(TypeItem.Bow))
+            {
+                _itensEquipmentSpritePlayer[8].gameObject.SetActive(false);
+                _itensEquipmentSpritePlayer[9].gameObject.SetActive(true);
+                _itensEquipmentSpritePlayer[9].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+            }
+            else if (item.TypeItem.Equals(TypeItem.Staff) || item.TypeItem.Equals(TypeItem.Sword))
             {
                 _itensEquipmentSpritePlayer[8].gameObject.SetActive(true);
+                _itensEquipmentSpritePlayer[9].gameObject.SetActive(false);
                 _itensEquipmentSpritePlayer[8].GetComponent<SpriteRenderer>().sprite = allSprites[0];
             } 
         }
-    }    
+    }
+
+    private void ActiveHud(Item item)
+    {
+        if (item.TypeItem.Equals(TypeItem.Staff))
+        {
+            _weapomEquiped.SetActive(true);
+            _bowEquiped.SetActive(false);
+            _magicHud.SetActive(true);
+            _warriorHud.SetActive(false);
+            _distanceHud.SetActive(false);
+        }
+        else if (item.TypeItem.Equals(TypeItem.Bow))
+        {
+            _bowEquiped.SetActive(true);
+            _weapomEquiped.SetActive(false);
+            _distanceHud.SetActive(true);
+            _magicHud.SetActive(false);
+            _warriorHud.SetActive(false);
+        }
+        else if (item.TypeItem.Equals(TypeItem.Sword))
+        {
+            _weapomEquiped.SetActive(true);
+            _bowEquiped.SetActive(false);
+            _warriorHud.SetActive(true);
+            _distanceHud.SetActive(false);
+            _magicHud.SetActive(false);
+        }
+    }
+
     private void CastMana(float amount)
     {
         attributes.CastMana((int)amount);
@@ -124,7 +168,7 @@ public class PlayerStatusController : MonoBehaviour
     
     private void LoseLife(float amount)
     {
-        attributes.LoseLife((int)amount);
+        //attributes.LoseLife((int)amount);
         _lifeCurrentBar.localScale = new Vector3((float)attributes.LifeCurrent / (float)attributes.LifeMax, 1, 1);
     }
 
@@ -174,6 +218,7 @@ public class PlayerStatusController : MonoBehaviour
 
     public bool Isflying { get => _isflying; }
     public Attributes Attributes { get => attributes; set => attributes = value; }
+    public Arrow EquipedArrow { get => _equipedArrow; set => _equipedArrow = value; }
 
     public void ToFly(bool fly)
     {

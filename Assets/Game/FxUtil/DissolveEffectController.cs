@@ -12,6 +12,25 @@ public class DissolveEffectController : MonoBehaviour
     [SerializeField] private bool _isDissolving;
     [SerializeField] private bool _isUseDissolving;
     [SerializeField] private List<Renderer> _skinList;
+    [SerializeField] private EnemyStatus _enemyStatus;
+    [SerializeField] private Transform _enemyLabel;
+    private void OnEnable()
+    {
+        Debug.Log("_enemyStatus "+_enemyStatus);
+        _enemyStatus.OnPlayDie += ActiveToggleDissolve;
+    }
+
+    private void ActiveToggleDissolve()
+    {
+        Invoke("ToggleDissolve", 5.0f);
+        Invoke("DisableEnemyLabel", 2f);
+        Destroy(gameObject, 7);
+    }
+
+    private void DisableEnemyLabel()
+    {
+        _enemyLabel.gameObject.SetActive(false);
+    }
 
     private void Start()
     {
@@ -21,56 +40,52 @@ public class DissolveEffectController : MonoBehaviour
 
     void Update()
     {
-        if(_isUseDissolving)
-        {
-            if(_isDissolving)
-            {
-                _dissolveAmount = Mathf.Clamp01(_dissolveAmount + Time.deltaTime);
-            } else
-            {
-                _dissolveAmount = Mathf.Clamp01(_dissolveAmount - Time.deltaTime);
-            }
-            _materialDissolveEffect.SetFloat("_DissolveAmount", _dissolveAmount);
-            if(_dissolveAmount == 0)
-            {
-                _isUseDissolving = false;
-            }
+        Dissolving();
 
-        }
-    
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            _isDissolving = !_isDissolving;
-            if(!_isUseDissolving)
-            {
-                ActiveDissolveSystem();
-            } else
-            {
-                
-            }
-        }
-        if(!_isUseDissolving && !_isDissolving && _dissolveAmount < 0.4 )
+        if (!_isUseDissolving && !_isDissolving && _dissolveAmount < 0.4)
         {
             DeactveDissolveSystem();
         }
-      
+
+        if (Application.isEditor)
+        {
+            if (Input.GetKeyDown(KeyCode.T))
+            {
+                ToggleDissolve();
+            }
+        }
+    }
+
+    private void ToggleDissolve()
+    {
+        _isDissolving = !_isDissolving;
+        if (!_isUseDissolving)
+        {
+            ActiveDissolveSystem();
+        }
+    }
+
+    private void Dissolving()
+    {
+        if (_isUseDissolving)
+        {
+            _dissolveAmount += _isDissolving ? Time.deltaTime : -Time.deltaTime;
+            _dissolveAmount = Mathf.Clamp01(_dissolveAmount);
+            _materialDissolveEffect.SetFloat("_DissolveAmount", _dissolveAmount);
+            if (!_isDissolving && Mathf.Approximately(_dissolveAmount, 0f))
+            {
+                _isUseDissolving = false;
+            }
+        }
     }
 
     private void ActiveDissolveSystem()
     {
-        foreach (var item in _skinList)
-        {
-            item.material = _materialDissolveEffect;
-        }
-       
+        _skinList.ForEach(item => item.material = _materialDissolveEffect);
         _isUseDissolving = true;
     }
     private void DeactveDissolveSystem()
     {
-        foreach (var item in _skinList)
-        {
-            item.material = _materialold;
-        }
-   
+        _skinList.ForEach(item => item.material = _materialold);
     }
 }

@@ -8,30 +8,68 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float attackDelay = 2f;
     [SerializeField] private LayerMask playerLayer;
     [SerializeField] private LayerMask platformLayer;
-    [SerializeField] private Animator anim;
+    [SerializeField] private EnemyAnimationController anim;
     [SerializeField] private float platformDetectionOffset = 0.5f;
     [SerializeField] private Transform _origemRaycastPlayerDetect;
 
+    private EnemyStatus enemyStatus;
     private Rigidbody2D rb;
     private Vector2 patrolStartPos;
     private Vector2 patrolEndPos;
     private RaycastHit2D playerHit;
     private RaycastHit2D platformHit;
-    private bool isFacingRight = true;
+    [SerializeField] private bool isFacingRight = true;
     [SerializeField] private float timeSinceAttack;
+
+    private float disableTimer = 0f; // Timer para desativar temporariamente o inimigo
+    private bool disableEnemy = false; // Variável que indica se o inimigo está desativado
+
+
+    public bool IsFacingRight { get => isFacingRight; set => isFacingRight = value; }
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemyStatus = GetComponent<EnemyStatus>();
     }
 
     private void Start()
     {
         patrolStartPos = transform.position;
         patrolEndPos = patrolStartPos + Vector2.right * patrolDistance;
+        anim = GetComponent<EnemyAnimationController>();
     }
 
     private void Update()
+    {
+        if (!enemyStatus.IsDie && !disableEnemy)
+        {
+            IAEnemy();
+        }
+
+        EnableEnemy();
+    }
+
+    private void EnableEnemy()
+    {
+        if (disableEnemy)
+        {
+            disableTimer += Time.deltaTime; // Adiciona tempo ao timer
+            if (disableTimer >= 2f) // Se o timer for maior ou igual a 2 segundos
+            {
+                disableEnemy = false; // Desativa o inimigo
+                disableTimer = 0f; // Reseta o timer
+            }
+        }
+    }
+
+    // Método para desativar temporariamente o inimigo
+    public void DisableEnemy()
+    {
+        disableEnemy = true;
+    }
+
+    private void IAEnemy()
     {
         // Detect player with raycast
         playerHit = Physics2D.Raycast(_origemRaycastPlayerDetect.position, Vector2.right * (isFacingRight ? 1 : -1), attackRange, playerLayer);
@@ -76,7 +114,6 @@ public class EnemyController : MonoBehaviour
         // Debug raycasts
         Debug.DrawRay(_origemRaycastPlayerDetect.position, Vector2.right * (isFacingRight ? 1 : -1) * attackRange, Color.red);
         Debug.DrawRay(platformDetectionPos, Vector2.down * 1.5f, Color.green);
-
     }
 
     private void Patrol()
@@ -93,7 +130,7 @@ public class EnemyController : MonoBehaviour
         }
 
         rb.velocity = new Vector2(isFacingRight ? moveSpeed : -moveSpeed, rb.velocity.y);
-        anim.Play("Walking");
+        anim.PlayerWalkkingEnemy();
     }
 
     private void MoveTowardsPlayer()
@@ -110,13 +147,12 @@ public class EnemyController : MonoBehaviour
         }
 
         rb.velocity = new Vector2(isFacingRight ? moveSpeed : -moveSpeed, rb.velocity.y);
-        anim.Play("Walking");
+        anim.PlayerWalkkingEnemy();
     }
 
     private void Attack()
     {
-        Debug.Log("MANDEI ANIMAÇÂO");
-        anim.Play("Attacking");
+        anim.PlayerAttackEnemy();
         timeSinceAttack = 0f;
     }
 

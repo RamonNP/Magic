@@ -52,6 +52,6 @@ public class EquipmentStatus
 
 public enum EquipmentSet
 {
-   SetOfEnts,
-   None
+   None,
+   SetOfEnts
 }

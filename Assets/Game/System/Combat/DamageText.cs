@@ -11,7 +11,7 @@ public class DamageText : MonoBehaviour
     [SerializeField] private Vector3 offset = new Vector3(0, 1, 0);
     [SerializeField] private Color _textColor;
 
-    private Transform _folowPosition;
+    //private Transform _folowPosition;
     private float startTime;
     private Vector3 startPosition;
     private void Start()
@@ -24,11 +24,12 @@ public class DamageText : MonoBehaviour
 
     public void ShowDamageText(int damageAmount, Transform tranformPosition)
     {
-        _folowPosition = tranformPosition;
+        //_folowPosition = tranformPosition;
         textMesh.text = "-" + damageAmount.ToString();
         enable = true;
         startTime = Time.time;
-        startPosition = transform.position;
+        startPosition = tranformPosition.position;
+        startPosition += new Vector3(0,3,0);
         Destroy(gameObject, duration);
     }
 
@@ -39,17 +40,16 @@ public class DamageText : MonoBehaviour
             float timeElapsed = Time.time - startTime;
             float t = Mathf.Clamp01(timeElapsed / duration);
 
-            Debug.Log("transform.position " + transform.position);
             Vector3 position = transform.position;
             position = startPosition + offset * t;
             position.y += speed * t * verticalSpeedMultiplier;
 
             // adiciona a posição do player ao texto
-            position += _folowPosition.position;
+            //position += _folowPosition.position;
 
             // converte a posição 3D em 2D para exibir corretamente na tela
             Vector2 screenPosition = Camera.main.WorldToScreenPoint(position);
-            Debug.Log("screenPosition " + screenPosition);
+
 
             // atualiza a posição do objeto na tela
             transform.position = position;

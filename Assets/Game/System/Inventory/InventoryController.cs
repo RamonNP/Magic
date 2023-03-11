@@ -50,8 +50,15 @@ public class InventoryController : MonoBehaviour
         }        
         for (int i = 0; i < ItensEquipment.Count; i++)
         {
-            //_itensEquipment.FindAll(it-> it.)        
-            TypeSlot typeSlots = _itensEquipmentSlot.Find(it => it.TypeSlotItem == ItensEquipment[i].TypeItem);
+            //_itensEquipment.FindAll(it-> it.)
+            //Debug.Log("Procurando"+ItensEquipment[i].TypeItem);
+            TypeItem typeItemFind = ItensEquipment[i].TypeItem;
+            if (typeItemFind.Equals(TypeItem.Bow) || typeItemFind.Equals(TypeItem.Sword))
+            {
+                //caso for armar, procurar arma nos Slots
+                typeItemFind = TypeItem.Staff;
+            }
+            TypeSlot typeSlots = _itensEquipmentSlot.Find(it => it.TypeSlotItem == typeItemFind);
             //ChangeItemSlots(TypeListItem.None, typeSlots.TypeListItem, _itensEquipment[i]);
             typeSlots.transform.GetChild(0).GetComponent<Image>().enabled = true;
             typeSlots.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("ItensInventory/" + ItensEquipment[i].TypeItem + "/" + ItensEquipment[i].SpriteItem);
@@ -83,7 +90,8 @@ public class InventoryController : MonoBehaviour
             TypeSlot type = button.transform.parent.GetComponent<TypeSlot>();
 
             if ((type.TypeSlotItem.Equals(TypeItem.Alls)
-                || isShieldOrMagicItens(type)
+                || isShieldOrMagicIten(type)
+                || isWeapomIten(type)
                 || type.TypeSlotItem.Equals(_mouseItem.GetComponent<ItemSlot>().Item.TypeItem))
                 && getItemSlot(type).Item.TypeItem.Equals(TypeItem.None))
             {
@@ -114,12 +122,21 @@ public class InventoryController : MonoBehaviour
         }
     }
 
-    private bool isShieldOrMagicItens(TypeSlot type)
+    private bool isShieldOrMagicIten(TypeSlot type)
     {
         TypeItem currentItemTypeItem = _mouseItem.GetComponent<ItemSlot>().Item.TypeItem;
         return ((type.TypeSlotItem.Equals(TypeItem.Shield)) 
             && (currentItemTypeItem.Equals(TypeItem.Shield) 
                     || currentItemTypeItem.Equals(TypeItem.MagicItem)));
+    }    
+    private bool isWeapomIten(TypeSlot type)
+    {
+        TypeItem currentItemTypeItem = _mouseItem.GetComponent<ItemSlot>().Item.TypeItem;
+        return ((type.TypeSlotItem.Equals(TypeItem.Staff)) 
+            && (currentItemTypeItem.Equals(TypeItem.Staff) 
+                    || currentItemTypeItem.Equals(TypeItem.Sword)
+                    || currentItemTypeItem.Equals(TypeItem.Bow)
+                    ));
     }
 
     public ItemSlot getItemSlot(TypeSlot itemSlot)

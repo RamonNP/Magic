@@ -12,6 +12,7 @@ public class AnimatorController : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private AnimatorEnum _lastAnimation;
+    private bool _isAttacking;
 
     private void Awake()
     {
@@ -48,16 +49,45 @@ public class AnimatorController : MonoBehaviour
     private void PlayCharging(bool animation)
     {
         PlayAnimation(AnimatorEnum.ChargingPlayerAnimation);
+    }    
+    public void ShootArrow()
+    {
+        PlayAnimation(AnimatorEnum.Shooting);
+    }    
+    public void HighShot()
+    {
+        PlayAnimation(AnimatorEnum.HighShot);
     }
     
     private void PlayAnimation(AnimatorEnum animation)
     {
-        if(!_lastAnimation.Equals(animation)) {
+        if(AnimatorEnum.Shooting.Equals(animation) || AnimatorEnum.HighShot.Equals(animation))
+        {
+            StartCoroutine(PlayAndNotifyAnimationEnd(animation));
+
+        } else if(!_isAttacking && !_lastAnimation.Equals(animation)) {
             _lastAnimation = animation;
-            Debug.Log("Animação Disparada - "+animation);
+            //Debug.Log("Animação Disparada - "+animation);
             _animator.Play(animation.ToString());
         }
     }
+
+    public IEnumerator PlayAndNotifyAnimationEnd(AnimatorEnum animation)
+    {
+        _isAttacking = true;
+        _animator.Play(animation.ToString());
+
+        // Espera até que a animação termine
+        while (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1.0f)
+        {
+            yield return null;
+        }
+
+        // Avisar que a animação terminou
+        //Debug.Log("A animação " + animation.ToString() + " terminou.");
+        _isAttacking = false;
+    }
+
     public void MagicCastByAnimation(MagicEnum magic)
     {
         switch (magic)
@@ -159,7 +189,7 @@ public class AnimatorController : MonoBehaviour
     }
 }
 
-internal enum AnimatorEnum
+public enum AnimatorEnum
 {
     Walking,
     ChargingPlayerAnimation,
@@ -169,5 +199,7 @@ internal enum AnimatorEnum
     CastIce,
     CastMagicComet,
     CastWaterMagic,
-    CastTornadoMagic
+    CastTornadoMagic,
+    Shooting,
+    HighShot
 }

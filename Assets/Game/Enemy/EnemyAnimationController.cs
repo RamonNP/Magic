@@ -7,32 +7,56 @@ public class EnemyAnimationController : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private FxIceEnemyDamage _fxIceEnemyController;
     [SerializeField] private FxEnemyController _fxFireEnemyController;
+    [SerializeField] private EnemyStatus _enemyStatus;
 
-
-    public void PlayFXEnemy(MagicStatus magicEnum)
+    private void Start()
     {
-        if(magicEnum.Magic.Equals(MagicEnum.MagicIce))
+        _enemyStatus = GetComponent<EnemyStatus>();    
+    }
+    public void PlayFXEnemy(MagicEnum magicEnum)
+    {
+        if(magicEnum.Equals(MagicEnum.MagicIce))
         {
-            _animator.Play("HurtIce");
+            Play("HurtIce");
             _fxIceEnemyController.OnFxFinished += this.FinishAnimationFx;
             _fxIceEnemyController.FXDamageIcePlay();
-        } else if (magicEnum.Magic.Equals(MagicEnum.Fire))
+        } else if (magicEnum.Equals(MagicEnum.Fire))
         {
-            _animator.Play("Hurt");
+            Play("Hurt");
             _fxFireEnemyController.OnFxFinished += this.FinishAnimationFx;
             _fxFireEnemyController.FXDamagePlay();
+        } else
+        {
+            Play("Hurt");
         }
     }
 
     public void FinishAnimationFx()
     {
-        _animator.Play("Idle");
+        Play("Idle");
         _fxIceEnemyController.OnFxFinished -= this.FinishAnimationFx;
     }
 
     public void PlayerAttackEnemy()
     {
-        _animator.Play("Attacking");
+        Play("Attacking");
+    }    
+    public void PlayerWalkkingEnemy()
+    {
+        Play("Walking");
+    }
+    public void PlayerEnemyDie(MagicEnum magicEnum)
+    {
+        Play("Dying");
+    }
+
+    private void Play(string Animation)
+    {
+        if(!_enemyStatus.IsDie || "Dying".Equals(Animation))
+        {
+            Debug.Log(Animation);
+            _animator.Play(Animation);
+        }
     }
 
 }

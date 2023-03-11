@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class Attributes
     public int ATKBase = 100;
     public int DEFBase = 50;         
     public int ManaBase = 100;     
-    public int LifeBase = 100;     
+    public int LifeBase = 1000;     
     private int _lifePerLevel = 25;     
     private int _manaPerLevel = 50;     
     public int AtkMagicPower;
@@ -29,6 +30,7 @@ public class Attributes
     public int XP;
     public int XPNexLevel;
     [SerializeField] private int _runeBonus;
+    public Action<float> OnLoseLife;
 
     public void Initialize()
     {
@@ -114,9 +116,15 @@ public class Attributes
     {
         manaCurrent -= amount;
     }    
-    public void LoseLife(int  amount)
+    public bool LoseLife(int  amount, MagicEnum magicEnum)
     {
         lifeCurrent -= amount;
+        if(lifeCurrent < 0)
+        {
+            lifeCurrent = 0;
+            return true;
+        }
+        return false;
     }
     public int RuneBonus { get => _runeBonus; set => _runeBonus = value; }
     public int ManaCurrent { get => manaCurrent; }
