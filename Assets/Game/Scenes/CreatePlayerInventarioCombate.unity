@@ -437,6 +437,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -683,6 +684,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -21866,6 +21868,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -28832,6 +28835,7 @@ MonoBehaviour:
     NameItem: Rune Fire
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -30700,6 +30704,7 @@ MonoBehaviour:
     NameItem: Rune Fire
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -31059,6 +31064,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -31238,6 +31244,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -32737,6 +32744,7 @@ MonoBehaviour:
     NameItem: Rune Fire
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -33371,6 +33379,8 @@ GameObject:
   - component: {fileID: 567488040}
   - component: {fileID: 567488042}
   - component: {fileID: 567488043}
+  - component: {fileID: 567488046}
+  - component: {fileID: 567488045}
   m_Layer: 0
   m_Name: PlayerBase
   m_TagString: Player
@@ -33514,6 +33524,43 @@ MonoBehaviour:
   isPlayeMoving: 0
   rb: {fileID: 0}
   _isAttacking: 0
+--- !u!50 &567488045
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567488038}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!70 &567488046
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567488038}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 1.1406565}
+  m_Size: {x: 0.5, y: 2.1728697}
+  m_Direction: 0
 --- !u!1 &592977046
 GameObject:
   m_ObjectHideFlags: 0
@@ -34443,6 +34490,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -36094,6 +36142,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -36848,43 +36897,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1670008223587988, guid: 5e31065336fdb85408852f1944c55fc0, type: 3}
   m_PrefabInstance: {fileID: 766130243}
   m_PrefabAsset: {fileID: 0}
---- !u!70 &766130246
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766130245}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.1406565}
-  m_Size: {x: 0.5, y: 2.1728697}
-  m_Direction: 0
---- !u!50 &766130247
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766130245}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &766130248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37184,6 +37196,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -37489,6 +37502,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -37825,6 +37839,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -38681,6 +38696,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -45814,6 +45830,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -46820,6 +46837,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -48079,6 +48097,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -48376,6 +48395,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -48681,6 +48701,7 @@ MonoBehaviour:
     NameItem: Rune Fire
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -48991,6 +49012,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49565,6 +49587,7 @@ MonoBehaviour:
     NameItem: Rune Fire
     TypeItem: 2
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: Fire
       SlotsMagic: 0
@@ -49584,6 +49607,7 @@ MonoBehaviour:
     NameItem: Rune Ice
     TypeItem: 2
     SpriteItem: 3
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49603,6 +49627,7 @@ MonoBehaviour:
     NameItem: Rune Fly
     TypeItem: 2
     SpriteItem: 2
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49622,6 +49647,7 @@ MonoBehaviour:
     NameItem: Boot
     TypeItem: 5
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49641,6 +49667,7 @@ MonoBehaviour:
     NameItem: Boot
     TypeItem: 5
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49660,6 +49687,7 @@ MonoBehaviour:
     NameItem: Head
     TypeItem: 4
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49679,6 +49707,7 @@ MonoBehaviour:
     NameItem: Head
     TypeItem: 4
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49698,6 +49727,7 @@ MonoBehaviour:
     NameItem: Armor
     TypeItem: 1
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49717,6 +49747,7 @@ MonoBehaviour:
     NameItem: Armor
     TypeItem: 1
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -49736,6 +49767,7 @@ MonoBehaviour:
     NameItem: Shield
     TypeItem: 6
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -51079,6 +51111,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -51380,6 +51413,63 @@ Transform:
   m_Father: {fileID: 1515944488}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1476408646
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 362063091784370787, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_Name
+      value: Armor
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.9640031
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.440553
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 806953674489838644, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
 --- !u!1 &1485186988
 GameObject:
   m_ObjectHideFlags: 0
@@ -52036,6 +52126,7 @@ MonoBehaviour:
     NameItem: Rune Fire
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -52198,6 +52289,8 @@ MonoBehaviour:
   - {fileID: 700808336}
   _damageTextPrefab: {fileID: 4576885081672337139, guid: b02ff055398716040bc5003cdfd46b9a, type: 3}
   _distanceFightingController: {fileID: 19705082}
+  _bloodSplashPrefab: {fileID: 8267835193586061848, guid: 508f8e75f4bc8e44fab889bb574f95bf, type: 3}
+  _yGap: 2
 --- !u!114 &1515944490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52212,8 +52305,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 1854094752}
   _combatController: {fileID: 1515944489}
-  shakeIntensity: 2
-  shakeDuration: 0.2
+  shakeIntensity: 3
+  shakeDuration: 0.3
 --- !u!1 &1520310661
 GameObject:
   m_ObjectHideFlags: 0
@@ -52698,6 +52791,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -53354,6 +53448,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -53621,6 +53716,7 @@ GameObject:
   - component: {fileID: 1605568622}
   - component: {fileID: 1605568624}
   - component: {fileID: 1605568623}
+  - component: {fileID: 1605568625}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -53698,6 +53794,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1605568625
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605568621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_PivotOffset: {x: 0, y: 0, z: 0}
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 0
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1608214977
 GameObject:
   m_ObjectHideFlags: 0
@@ -54366,6 +54479,7 @@ MonoBehaviour:
     NameItem: Rune Fire
     TypeItem: 2
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -65282,6 +65396,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -65857,6 +65972,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -67944,6 +68060,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -68254,6 +68371,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -69280,6 +69398,10 @@ MonoBehaviour:
     XPNexLevel: 0
     _runeBonus: 0
   _enemyAnimationController: {fileID: 0}
+  _listLootEspecial:
+  - {fileID: 362063091784370787, guid: 6a94aeb944e7c024a87469cf73a03f63, type: 3}
+  _listLoot:
+  - {fileID: 362063091784370787, guid: fa002c4145aa4634182054c849ecd8cb, type: 3}
 --- !u!50 &2050126679
 Rigidbody2D:
   serializedVersion: 4
@@ -69344,6 +69466,7 @@ MonoBehaviour:
   _origemRaycastPlayerDetect: {fileID: 1254758816}
   isFacingRight: 1
   timeSinceAttack: 0
+  disableTimerAmount: 1.1
 --- !u!114 &2050126682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70731,6 +70854,7 @@ MonoBehaviour:
     NameItem: 
     TypeItem: 0
     SpriteItem: 1
+    classItem: 0
     PowerRuneItem:
       Name: 
       SlotsMagic: 0

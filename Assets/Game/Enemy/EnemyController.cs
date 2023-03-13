@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     private RaycastHit2D platformHit;
     [SerializeField] private bool isFacingRight = true;
     [SerializeField] private float timeSinceAttack;
+    [SerializeField] private float disableTimerAmount;
 
     private float disableTimer = 0f; // Timer para desativar temporariamente o inimigo
     private bool disableEnemy = false; // Variável que indica se o inimigo está desativado
@@ -55,7 +56,7 @@ public class EnemyController : MonoBehaviour
         if (disableEnemy)
         {
             disableTimer += Time.deltaTime; // Adiciona tempo ao timer
-            if (disableTimer >= 2f) // Se o timer for maior ou igual a 2 segundos
+            if (disableTimer >= disableTimerAmount) // Se o timer for maior ou igual a 2 segundos
             {
                 disableEnemy = false; // Desativa o inimigo
                 disableTimer = 0f; // Reseta o timer

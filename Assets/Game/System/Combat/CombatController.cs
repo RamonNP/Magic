@@ -11,6 +11,8 @@ public class CombatController : MonoBehaviour
 
     public Action<MagicStatus, EnemyStatus> OnPlayEnemyFX;
     public Action OnHitShake;
+    [SerializeField] private GameObject _bloodSplashPrefab;
+    [SerializeField] private float _yGap = 2.0f;
 
     private void OnEnable()
     {
@@ -30,8 +32,6 @@ public class CombatController : MonoBehaviour
             Debug.Log("IMPLEMENTAR SISTEMA DE BLOQUEIO DE ATAQUE");
             return;
         }
-
-        ShowDamageText(damage, enemy.transform);
 
         MagicEnum magicEnum = default;
         switch (_arrowType.ArrowType)
@@ -62,6 +62,13 @@ public class CombatController : MonoBehaviour
                 break;
         }
 
+        EnemyHitEffects(enemy, magicEnum, damage, _arrowType.transform);
+    }
+
+    private void EnemyHitEffects(EnemyController enemy, MagicEnum magicEnum, int damage, Transform objectHitEnemy)
+    {
+        ShowDamageText(damage, enemy.transform);
+
         enemy.GetComponent<EnemyStatus>().SetIsDie(enemy.GetComponent<EnemyStatus>().Attribute.LoseLife(damage, magicEnum));
         enemy.GetComponent<EnemyStatus>().transform.GetComponent<EnemyAnimationController>().PlayFXEnemy(magicEnum);
         if (enemy.GetComponent<EnemyStatus>().IsDie)
@@ -70,16 +77,26 @@ public class CombatController : MonoBehaviour
         }
         //desabilita o player para instancias  o KnockBack
         enemy.GetComponent<EnemyController>().DisableEnemy();
-        ApplyKnockBack(enemy, _arrowType);
+        ApplyKnockBack(enemy, objectHitEnemy);
         OnHitShake?.Invoke();
+        SpawnBloodSplash(enemy.gameObject);
+    }
+    public void SpawnBloodSplash(GameObject location)
+    {
+        Vector3 spawnPos = new Vector3(location.transform.position.x, location.transform.position.y + _yGap, location.transform.position.z);
+        // Instancia o prefab BloodSplash na posição e rotação do objeto "location"
+        GameObject bloodSplash = Instantiate(_bloodSplashPrefab, spawnPos, location.transform.rotation);
+
+        // Destroi o prefab BloodSplash depois de 2 segundos
+        Destroy(bloodSplash, 2f);
     }
 
-    private void ApplyKnockBack(EnemyController enemy, Arrow _arrowType)
+    private void ApplyKnockBack(EnemyController enemy, Transform objectHitEnemy)
     {
         float kx = 0;
         float enemyKnockbackX = enemy.GetComponent<Knockback>().KnockbackPosition.localPosition.x;
 
-        if (_arrowType.transform.position.x < enemy.transform.position.x)
+        if (objectHitEnemy.transform.position.x < enemy.transform.position.x)
         {
             if (enemy.transform.GetComponent<EnemyController>().IsFacingRight && enemyKnockbackX > 0 || !enemy.transform.GetComponent<EnemyController>().IsFacingRight && enemyKnockbackX < 0)
             {
@@ -91,7 +108,7 @@ public class CombatController : MonoBehaviour
             }
             Debug.Log("Flecha a Esquerda");
         }
-        else if (_arrowType.transform.position.x > enemy.transform.position.x)
+        else if (objectHitEnemy.transform.position.x > enemy.transform.position.x)
         {
             if (enemy.transform.GetComponent<EnemyController>().IsFacingRight && enemyKnockbackX < 0 || !enemy.transform.GetComponent<EnemyController>().IsFacingRight && enemyKnockbackX > 0)
             {
@@ -118,28 +135,15 @@ public class CombatController : MonoBehaviour
 
     private void CombatCalculate(MagicStatus magicEnum, EnemyStatus enemyStatus, TypeItem TypeItem)
     {
-        int damage = 0;
-        if (TypeItem.Equals(TypeItem.Staff))
-        {
-            damage = CalculateDamage(magicEnum.PlayerStatusController.Attributes.AtkMagicPower, enemyStatus.Attribute.DEF);
-            Debug.Log("ATK: " + magicEnum.PlayerStatusController.Attributes.AtkMagicPower + " DEF"+ enemyStatus.Attribute.DEF);
-        }
-        if (damage > 0)
-        {
-            ShowDamageText(damage, enemyStatus.transform);
-            enemyStatus.transform.GetComponent<EnemyAnimationController>().PlayFXEnemy(magicEnum.Magic);
-        } else
+        int damage = damage = CalculateDamage(magicEnum.PlayerStatusController.Attributes.AtkMagicPower, enemyStatus.Attribute.DEF);
+        if (damage <= 0)
         {
             Debug.Log("IMPLEMENTAR SISTEMA DE BLOQUEIO DE ATAQUE");
+            return;
         }
-        Debug.Log("O dano causado foi: " + damage);
 
+        EnemyHitEffects(enemyStatus.GetComponent<EnemyController>(), magicEnum.Magic, damage, magicEnum.transform);
 
-        //Play animation for damages
-        //Calculate damage of enemy
-
-
-        Debug.Log("CHGEOU NO FINAL IMPLEMNETAR COMBATE" + magicEnum.Magic +"  - Enemy = "+ enemyStatus.Enemy);
     }
 
     void ShowDamageText(int damageAmount, Transform transformdamage)

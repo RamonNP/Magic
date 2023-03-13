@@ -219,6 +219,7 @@ public class PlayerStatusController : MonoBehaviour
     public bool Isflying { get => _isflying; }
     public Attributes Attributes { get => attributes; set => attributes = value; }
     public Arrow EquipedArrow { get => _equipedArrow; set => _equipedArrow = value; }
+    public InventoryController InventoryController { get => _inventoryController; set => _inventoryController = value; }
 
     public void ToFly(bool fly)
     {

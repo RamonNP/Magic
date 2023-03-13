@@ -76,6 +76,20 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    public void CollectItem(Item item)
+    {
+        if(_itensInventory.Count < 16)
+        {
+            int i = _itensInventory.Count;
+            _itensInventory.Add(item);
+            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().enabled = true;
+            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().color = Color.white;
+            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("ItensInventory/" + _itensInventory[i].TypeItem + "/" + _itensInventory[i].SpriteItem.ToString());
+            _itensInventorySlots[i].GetChild(0).GetComponent<ItemSlot>().Item = item;
+            Debug.Log("ADICIONADO AO INVENTARIO - "+item.NameItem);
+        }
+    }
+
     public void DragItem(GameObject button)
     {
         _mouseItem = button;

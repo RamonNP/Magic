@@ -8,6 +8,7 @@ public class Item
     public string NameItem;
     public TypeItem TypeItem;
     public int SpriteItem = 1;
+    public ClassItem classItem;
     public PowerRune PowerRuneItem;
     public EquipmentStatus EquipmentStatus;
 
@@ -65,7 +66,8 @@ public enum TypeItem
     Amulet,
     Alls, 
     Sword,
-    Bow
+    Bow,
+    Coin
 }
 public enum TypeListItem
 {
@@ -74,4 +76,11 @@ public enum TypeListItem
     Runes,
     None,
     Drop
+}
+public enum ClassItem
+{
+    None,
+    Mage,
+    Warrior,
+    Archer
 }

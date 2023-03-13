@@ -13,6 +13,69 @@ public class EquipmentStatus
     [SerializeField] private int _distanceFight;
     [SerializeField] public EquipmentSet EquipmentSet;
 
+    public void GenerateEquipmentStatus(ClassItem classItem, TypeItem typeItem)
+    {
+        switch (classItem)
+        {
+            case ClassItem.Mage:
+                switch (typeItem)
+                {
+                    case TypeItem.Staff:
+                        _defense = UnityEngine.Random.Range(0, 2);
+                        _magicPower = UnityEngine.Random.Range(20, 26);
+                        _physicalPower = UnityEngine.Random.Range(3, 6);
+                        break;
+                    case TypeItem.Armor:
+                        _mana = UnityEngine.Random.Range(7, 11);
+                        _life = UnityEngine.Random.Range(3, 6);
+                        _defense = UnityEngine.Random.Range(2, 4);
+                        break;
+                    default:
+                        Debug.LogError("Invalid TypeItem for Mage class");
+                        break;
+                }
+                break;
+            case ClassItem.Warrior:
+                switch (typeItem)
+                {
+                    case TypeItem.Sword:
+                        _defense = UnityEngine.Random.Range(0, 2);
+                        _magicPower = UnityEngine.Random.Range(3, 6);
+                        _physicalPower = UnityEngine.Random.Range(17, 21);
+                        break;
+                    case TypeItem.Armor:
+                        _mana = UnityEngine.Random.Range(2, 5);
+                        _life = UnityEngine.Random.Range(7, 11);
+                        _defense = UnityEngine.Random.Range(2, 5);
+                        break;
+                    default:
+                        Debug.LogError("Invalid TypeItem for Warrior class");
+                        break;
+                }
+                break;
+            case ClassItem.Archer:
+                switch (typeItem)
+                {
+                    case TypeItem.Bow:
+                        _magicPower = UnityEngine.Random.Range(0, 2);
+                        _distanceFight = UnityEngine.Random.Range(20, 26);
+                        break;
+                    case TypeItem.Armor:
+                        _mana = UnityEngine.Random.Range(3, 6);
+                        _life = UnityEngine.Random.Range(7, 11);
+                        _defense = UnityEngine.Random.Range(2, 4);
+                        break;
+                    default:
+                        Debug.LogError("Invalid TypeItem for Archer class");
+                        break;
+                }
+                break;
+            default:
+                Debug.LogError("Invalid ClassItem");
+                break;
+        }
+    }
+
     public int Life
     {
         get { return _life; }
