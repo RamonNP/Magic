@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,13 +9,16 @@ public class InventoryController : MonoBehaviour
 {
     [SerializeField] private GameObject _mouseItem;
     [SerializeField] private List<Item> _itensInventory;
-    [SerializeField] private Transform[] _itensInventorySlots;
+    [SerializeField] private List<Transform> _itensInventorySlots;
     [SerializeField] private List<Item> _itensRune;
     [SerializeField] private Transform[] _itensRuneSlot;
     [SerializeField] private List<Item> _itensEquipment;
     [SerializeField] private List<TypeSlot> _itensEquipmentSlot;
+    [SerializeField] private Item _coin;
     public Action<Item> OnItemEquiped;
     public Action<Item> OnItemUnequip;
+    public Action<Item, Item> OnChangeStatus;
+
 
     public List<Item> ItensRune { get => _itensRune; }
     public List<Item> ItensEquipment { get => _itensEquipment; }
@@ -22,36 +26,32 @@ public class InventoryController : MonoBehaviour
     private void Awake()
     {
         //GameDataManager.WriteFileItemList("_itensInventory", new InventoryFileJson { ItensInventory = _itensInventory, ItensRune = _itensRune, ItensEquipment = _itensEquipment });
-         InventoryFileJson inventoryFileJson = GameDataManager.ReadFileInventoryFileJson("Inventory");
+        InventoryFileJson inventoryFileJson = GameDataManager.ReadFileInventoryFileJson("Inventory");
         _itensInventory = inventoryFileJson.ItensInventory;
         _itensEquipment = inventoryFileJson.ItensEquipment;
         _itensRune = inventoryFileJson.ItensRune;
-
-
-        for (int i = 0; i < _itensInventory.Count; i++)
+        _coin = inventoryFileJson.Coin;
+        if(_coin.NameItem.Equals(""))
         {
-            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().enabled = true;
-            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().color = Color.white;
-            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("ItensInventory/" + _itensInventory[i].TypeItem + "/" + _itensInventory[i].SpriteItem.ToString());
-            _itensInventorySlots[i].GetChild(0).GetComponent<ItemSlot>().Item = _itensInventory[i];
-            /*
-            if (_itensInventory[i].TypeItem.Equals(TypeItem.Rune))
-            {
-                _itensInventory[i].GenereteRune();
-            } */
-        }        
-        
+            _coin = new Item();
+            _coin.IdItem = "COIN001";
+            _coin.NameItem = "Coin";
+            _coin.TypeItem = TypeItem.Coin;
+            _coin.IsGroupable = true;
+        }
+
+        RefreshInventory();
+
         for (int i = 0; i < _itensRune.Count; i++)
         {
-            _itensRuneSlot[i].GetChild(0).GetComponent<Image>().enabled = true;
-            _itensRuneSlot[i].GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("ItensInventory/" + _itensRune[i].TypeItem +"/"+ _itensRune[i].SpriteItem);
-            _itensRuneSlot[i].GetChild(0).GetComponent<Image>().color = Color.white;
-            _itensRuneSlot[i].GetChild(0).GetComponent<ItemSlot>().Item = _itensRune[i];
-        }        
+            _itensRuneSlot[i].GetComponentInChildren<Image>().enabled = true;
+            _itensRuneSlot[i].GetComponentInChildren<Image>().sprite = GameDataManager.GetInventorySprite(_itensRune[i]);//Resources.Load<Sprite>("ItensInventory/" + _itensRune[i].TypeItem + "/" + _itensRune[i].SpriteItem);
+            _itensRuneSlot[i].GetComponentInChildren<Image>().color = Color.white;
+            _itensRuneSlot[i].GetComponentInChildren<ItemSlot>().Item = _itensRune[i];
+        }
+
         for (int i = 0; i < ItensEquipment.Count; i++)
         {
-            //_itensEquipment.FindAll(it-> it.)
-            //Debug.Log("Procurando"+ItensEquipment[i].TypeItem);
             TypeItem typeItemFind = ItensEquipment[i].TypeItem;
             if (typeItemFind.Equals(TypeItem.Bow) || typeItemFind.Equals(TypeItem.Sword))
             {
@@ -59,36 +59,80 @@ public class InventoryController : MonoBehaviour
                 typeItemFind = TypeItem.Staff;
             }
             TypeSlot typeSlots = _itensEquipmentSlot.Find(it => it.TypeSlotItem == typeItemFind);
-            //ChangeItemSlots(TypeListItem.None, typeSlots.TypeListItem, _itensEquipment[i]);
-            typeSlots.transform.GetChild(0).GetComponent<Image>().enabled = true;
-            typeSlots.transform.GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("ItensInventory/" + ItensEquipment[i].TypeItem + "/" + ItensEquipment[i].SpriteItem);
-            typeSlots.transform.GetChild(0).GetComponent<Image>().color = Color.white;
-            typeSlots.transform.GetChild(0).GetComponent<ItemSlot>().Item = ItensEquipment[i];
+            typeSlots.transform.GetComponentInChildren<Image>().enabled = true;
+            typeSlots.transform.GetComponentInChildren<Image>().sprite = GameDataManager.GetInventorySprite(ItensEquipment[i]);//Resources.Load<Sprite>("ItensInventory/" + ItensEquipment[i].TypeItem + "/" + ItensEquipment[i].SpriteItem);
+            typeSlots.transform.GetComponentInChildren<Image>().color = Color.white;
+            typeSlots.transform.GetComponentInChildren<ItemSlot>().Item = ItensEquipment[i];
         }
         
+
+    }
+
+
+    private void RefreshInventory()
+    {
+
+        int count = 0;
+        for (int i = 0; i < _itensInventory.Count; i++)
+        {
+            Transform ItemImage = _itensInventorySlots[i].Find("ItemImage");
+            ItemImage.GetComponent<Image>().enabled = true;
+            ItemImage.GetComponent<Image>().color = Color.white;
+            ItemImage.GetComponent<Image>().sprite = GameDataManager.GetInventorySprite(_itensInventory[i]);//Resources.Load<Sprite>("ItensInventory/" + _itensInventory[i].TypeItem + "/" + _itensInventory[i].SpriteItem.ToString());
+
+            ItemImage.GetComponent<ItemSlot>().Item = _itensInventory[i];
+            count = i;
+        }
+        count++;
+        for (int i = count; i < _itensInventorySlots.Count; i++)
+        {
+            if(_itensInventorySlots[i].GetComponentInChildren<Image>().enabled)
+            {
+                Transform ItemImage = _itensInventorySlots[i].Find("ItemImage");
+                Debug.Log("Inicializando "+i + ItemImage.GetComponent<ItemSlot>().Item.NameItem);
+                ItemImage.GetComponent<ItemSlot>().Item = new Item();
+                //_itensInventorySlots[i].GetChild(0).GetComponent<Image>().enabled = false;
+                ItemImage.GetComponent<Image>().sprite = null; // Remove o sprite
+                ItemImage.GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f); // Define a cor como branca transparente
+            }
+        }
+
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            GameDataManager.WriteFileInventoryFileJson("Inventory", new InventoryFileJson { ItensInventory = _itensInventory, ItensRune = _itensRune, ItensEquipment = ItensEquipment });
+            GameDataManager.WriteFileInventoryFileJson("Inventory", new InventoryFileJson { ItensInventory = _itensInventory, ItensRune = _itensRune, ItensEquipment = ItensEquipment, Coin = _coin });
         }
     }
 
     public void CollectItem(Item item)
     {
-        if(_itensInventory.Count < 16)
+        if (item.TypeItem.Equals(TypeItem.Coin))
+        {
+            if(_coin == null)
+            {
+                _coin = new Item();
+                _coin.IdItem = "COIN001";
+                _coin.NameItem = "Coin";
+                _coin.TypeItem = TypeItem.Coin;
+            }
+            _coin.Count++;
+            return;
+        }
+        if(_itensInventory.Count < 15)
         {
             int i = _itensInventory.Count;
             _itensInventory.Add(item);
-            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().enabled = true;
-            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().color = Color.white;
-            _itensInventorySlots[i].GetChild(0).GetComponent<Image>().sprite = Resources.Load<Sprite>("ItensInventory/" + _itensInventory[i].TypeItem + "/" + _itensInventory[i].SpriteItem.ToString());
-            _itensInventorySlots[i].GetChild(0).GetComponent<ItemSlot>().Item = item;
-            Debug.Log("ADICIONADO AO INVENTARIO - "+item.NameItem);
+            Debug.Log("ADICIONADO AO INVENTARIO - Slot "+i+" Name "+item.NameItem);
+            _itensInventorySlots[i].GetComponentInChildren<Image>().enabled = true;
+            _itensInventorySlots[i].GetComponentInChildren<Image>().color = Color.white;
+            _itensInventorySlots[i].GetComponentInChildren<Image>().sprite = GameDataManager.GetInventorySprite(_itensInventory[i]);//Resources.Load<Sprite>("ItensInventory/" + _itensInventory[i].TypeItem + "/" + _itensInventory[i].SpriteItem.ToString());
+            _itensInventorySlots[i].GetComponentInChildren<ItemSlot>().Item = item;
         }
     }
+
 
     public void DragItem(GameObject button)
     {
@@ -101,19 +145,32 @@ public class InventoryController : MonoBehaviour
         {
 
             Transform auxParent = _mouseItem.transform.parent;
-            TypeSlot type = button.transform.parent.GetComponent<TypeSlot>();
-
-            if ((type.TypeSlotItem.Equals(TypeItem.Alls)
-                || isShieldOrMagicIten(type)
-                || isWeapomIten(type)
-                || type.TypeSlotItem.Equals(_mouseItem.GetComponent<ItemSlot>().Item.TypeItem))
-                && getItemSlot(type).Item.TypeItem.Equals(TypeItem.None))
+            TypeSlot targetType = button.transform.parent.GetComponent<TypeSlot>();
+            if(targetType.TypeSlotItem.Equals(TypeItem.Drop))
             {
-                Debug.Log("type.TypeSlotItem " + type.TypeSlotItem + " _mouseItem.GetComponent<ItemSlot>() " + _mouseItem.GetComponent<ItemSlot>().Item.TypeItem);
+                _mouseItem.transform.localPosition = Vector3.zero;
+                _itensInventory.Remove(_mouseItem.transform.GetComponent<ItemSlot>().Item);
+                RefreshInventory();
+                return;
+            }
+            //Debug.Log("type.TypeSlotItem " + targetType.TypeSlotItem + " _mouseItem.GetComponent<ItemSlot>() " + _mouseItem.GetComponent<ItemSlot>().Item.TypeItem);
+            //set save Change Itens List
+
+            if (( targetType.TypeSlotItem.Equals(TypeItem.Alls)
+                || isShieldOrMagicIten(targetType)
+                || (isWeapomIten(_mouseItem.GetComponent<ItemSlot>()) && targetType.TypeSlotItem.Equals(TypeItem.Staff))
+                || targetType.TypeSlotItem.Equals(_mouseItem.GetComponent<ItemSlot>().Item.TypeItem))
+                || CheckItemCompatibility(_mouseItem, button))
+            {
+                Debug.Log("type.TypeSlotItem " + targetType.TypeSlotItem + " _mouseItem.GetComponent<ItemSlot>() " + _mouseItem.GetComponent<ItemSlot>().Item.TypeItem);
                 //set save Change Itens List
-                ChangeItemSlots(_mouseItem.transform.parent.GetComponent<TypeSlot>().TypeListItem, type.TypeListItem, _mouseItem.transform.GetComponent<ItemSlot>().Item);
-                if (type.TypeSlotItem.Equals(_mouseItem.GetComponent<ItemSlot>().Item.TypeItem))
-                    ChangeItemSlots(type.TypeListItem, _mouseItem.transform.parent.GetComponent<TypeSlot>().TypeListItem, getItemSlot(type).Item);
+                ChangeItemSlots(_mouseItem.transform.parent.GetComponent<TypeSlot>().TypeListItem, targetType.TypeListItem, _mouseItem.transform.GetComponent<ItemSlot>().Item);
+                ChangeItemSlots(targetType.TypeListItem, _mouseItem.transform.parent.GetComponent<TypeSlot>().TypeListItem, targetType.GetComponentInChildren<ItemSlot>().Item);
+
+                if (CheckItemCompatibility(_mouseItem, button))
+                {
+                    OnChangeStatus?.Invoke(targetType.GetComponentInChildren<ItemSlot>().Item, _mouseItem.transform.GetComponent<ItemSlot>().Item);
+                }
 
                 Vector2 auxSize = _mouseItem.transform.GetComponent<RectTransform>().sizeDelta;
                 _mouseItem.transform.GetComponent<RectTransform>().sizeDelta = button.transform.GetComponent<RectTransform>().sizeDelta;
@@ -132,6 +189,7 @@ public class InventoryController : MonoBehaviour
 
                 _mouseItem.transform.SetParent(button.transform.parent);
                 button.transform.SetParent(auxParent);
+                //RefreshInventory();
             }
         }
     }
@@ -143,19 +201,52 @@ public class InventoryController : MonoBehaviour
             && (currentItemTypeItem.Equals(TypeItem.Shield) 
                     || currentItemTypeItem.Equals(TypeItem.MagicItem)));
     }    
-    private bool isWeapomIten(TypeSlot type)
+    private bool isWeapomIten(ItemSlot type)
     {
-        TypeItem currentItemTypeItem = _mouseItem.GetComponent<ItemSlot>().Item.TypeItem;
-        return ((type.TypeSlotItem.Equals(TypeItem.Staff)) 
-            && (currentItemTypeItem.Equals(TypeItem.Staff) 
-                    || currentItemTypeItem.Equals(TypeItem.Sword)
-                    || currentItemTypeItem.Equals(TypeItem.Bow)
-                    ));
+        return (
+            (type.Item.TypeItem.Equals(TypeItem.Staff) || type.Item.TypeItem.Equals(TypeItem.Sword) || type.Item.TypeItem.Equals(TypeItem.Bow)) 
+            );
     }
 
-    public ItemSlot getItemSlot(TypeSlot itemSlot)
+
+    public bool CheckItemCompatibility(GameObject item, GameObject target)
     {
-        return itemSlot.GetComponentInChildren<ItemSlot>();
+        var itemSlotType = item.transform.parent.GetComponent<TypeSlot>().TypeSlotItem;
+        var itemIsWeapon = isWeapomIten(item.transform.GetComponent<ItemSlot>());
+        var targetIsWeapon = isWeapomIten(target.transform.GetComponent<ItemSlot>());
+        var itemIsCompatibleWithTargetType = itemSlotType.Equals(target.GetComponent<ItemSlot>().Item.TypeItem);
+
+        if (itemIsCompatibleWithTargetType)
+        {
+            return true;
+        }
+
+        if (itemIsWeapon && targetIsWeapon)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    public bool getItemSlot(GameObject iten, GameObject target)
+    {
+        if(target.transform.parent.GetComponent<TypeSlot>().TypeSlotItem.Equals(TypeItem.Alls) && iten.transform.parent.GetComponent<TypeSlot>().TypeSlotItem.Equals(TypeItem.Alls))
+        {
+            return true;
+        } 
+        else if (target.transform.parent.GetComponent<TypeSlot>().TypeSlotItem.Equals(TypeItem.Alls) && iten.GetComponent<ItemSlot>().Item.TypeItem.Equals(target.GetComponent<ItemSlot>().Item.TypeItem))
+        {
+            return true;
+        }        
+        else if (target.transform.parent.GetComponent<TypeSlot>().TypeSlotItem.Equals(TypeItem.Alls) 
+            && isWeapomIten(target.transform.GetComponent<ItemSlot>())
+            && isWeapomIten(iten.transform.GetComponent<ItemSlot>())
+            )
+        {
+            return true;
+        }
+        //return target.GetComponentInChildren<ItemSlot>().Item.TypeItem.Equals(TypeItem.None);
+        return false;
     }
     public void ChangeItemSlots(TypeListItem origem, TypeListItem target, Item item)
     {
@@ -204,6 +295,6 @@ public class InventoryFileJson
     public List<Item> ItensInventory;
     public List<Item> ItensRune;
     public List<Item> ItensEquipment;
-
+    public Item Coin;
 
 }

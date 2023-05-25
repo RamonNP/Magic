@@ -12,10 +12,35 @@ public class ItemSlot : MonoBehaviour
 
     private void Start()
     {
-        if(Item != null && !Item.IdItem.Equals(""))
+        //CheckItemTypeAndSetSize();
+        if (Item != null && !"".Equals(Item.IdItem))
         {
             this.gameObject.GetComponent<Image>().enabled = true;
-            this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("ItensInventory/"+ Item.TypeItem + "/" +Item.SpriteItem); 
+            string path = "ItensInventory/" + Item.TypeItem + "/" + Item.SpriteItem;
+            if (Item.TypeItem.Equals(TypeItem.Armor))
+            {
+                path = "ItensInventory/" + Item.TypeItem + "/icon" + Item.SpriteItem;
+            }
+            Debug.Log(path);
+            this.gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>(path); 
+        }
+    }
+
+    public void CheckItemTypeAndSetSize()
+    {
+        var itemSlot = GetComponent<ItemSlot>();
+        var rectTransform = GetComponent<RectTransform>();
+        if (itemSlot != null &&
+            (itemSlot.Item.TypeItem.Equals(TypeItem.Sword) ||
+             itemSlot.Item.TypeItem.Equals(TypeItem.Staff) ||
+             itemSlot.Item.TypeItem.Equals(TypeItem.Bow)))
+        {
+            Debug.Log(itemSlot.Item.NameItem + new Vector2(80, 80));
+            rectTransform.sizeDelta = new Vector2(80, 80);
+        } else if(!itemSlot.Item.TypeItem.Equals(TypeItem.None))
+        {
+            //Debug.Log(itemSlot.Item.NameItem + new Vector2(180, 90));
+            //rectTransform.sizeDelta = new Vector2(180, 90);
         }
     }
 

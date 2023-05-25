@@ -20,8 +20,6 @@ public class PlayerStatusController : MonoBehaviour
 
 
     [Header("UI Text Config")]
-    [SerializeField] private TextMeshProUGUI _ATKText;
-    [SerializeField] private TextMeshProUGUI _DefText;
     [SerializeField] private RectTransform _manaCurrentBar;
     [SerializeField] private RectTransform _lifeCurrentBar;
     [SerializeField] private GameObject _magicHud;
@@ -54,8 +52,6 @@ public class PlayerStatusController : MonoBehaviour
     }
     private void Update()
     {
-        _ATKText.text = "M-POWER:"+attributes.AtkMagicPower.ToString();
-        _DefText.text = "DEF:" + attributes.DEF.ToString();
         if (Input.GetKeyDown(KeyCode.S))
         {
             GameDataManager.WriteFileAttributesFileJson("PlayerAtributs", attributes);
@@ -68,6 +64,19 @@ public class PlayerStatusController : MonoBehaviour
     {
         _inventoryController.OnItemEquiped += EquipedItem;
         _inventoryController.OnItemUnequip += UnequipItem;
+        _inventoryController.OnChangeStatus += UpdateStatus;
+    }
+
+    private void UpdateStatus(Item oldItem, Item newItem)
+    {
+        Debug.Log("TRADE");
+        Attributes oldAttributes = attributes.Clone();
+        oldAttributes.UnequipItem(newItem);
+        oldAttributes.EquipItem(oldItem);
+        oldAttributes = oldAttributes.Clone();
+
+        this.transform.GetComponent<UIAttributes>().UpdateStatus(oldAttributes);
+        this.transform.GetComponent<UIAttributes>().UpdateStatus(attributes);
     }
 
     private void EquipedItem(Item item)
@@ -78,58 +87,57 @@ public class PlayerStatusController : MonoBehaviour
         }
         if (item.TypeItem.Equals(TypeItem.Rune))
         {
-            //Debug.Log("EquipedRune " + item.TypeItem + "-" + item.NameItem +"-"+item.PowerRuneItem.MagicLevel);
             _powerRuneListEquiped.Add(item.PowerRuneItem);
             attributes.AddRuneBonus(item.PowerRuneItem.MagicLevel);
         }        
         if(!item.TypeItem.Equals(TypeItem.Rune) && !item.TypeItem.Equals(TypeItem.None) && !item.TypeItem.Equals(TypeItem.Alls))
         {
-            //Debug.Log("EquipItem - " + item.NameItem);
-            //Debug.Log("EquipItem - " + item.NameItem);
             attributes.EquipItem(item);
             ChangeSpriteEquipArmor(item);
         }
 
-        void ChangeSpriteEquipArmor(Item item)
+        this.transform.GetComponent<UIAttributes>().UpdateStatus(attributes);
+
+    }
+    private void ChangeSpriteEquipArmor(Item item)
+    {
+        Sprite[] allSprites = Resources.LoadAll<Sprite>("ItensInventory/" + item.TypeItem + "/" + item.SpriteItem.ToString());
+        if (item.TypeItem.Equals(TypeItem.Armor))
         {
-            Sprite[] allSprites = Resources.LoadAll<Sprite>("ItensInventory/" + item.TypeItem + "/" + item.SpriteItem.ToString());
-            if (item.TypeItem.Equals(TypeItem.Armor))
-            {
-                _itensEquipmentSpritePlayer[0].GetComponent<SpriteRenderer>().sprite = allSprites[0];
-                _itensEquipmentSpritePlayer[1].GetComponent<SpriteRenderer>().sprite = allSprites[1];
-                _itensEquipmentSpritePlayer[2].GetComponent<SpriteRenderer>().sprite = allSprites[2];
-                _itensEquipmentSpritePlayer[3].GetComponent<SpriteRenderer>().sprite = allSprites[3];
-                _itensEquipmentSpritePlayer[4].GetComponent<SpriteRenderer>().sprite = allSprites[4];
-            } 
-            else if (item.TypeItem.Equals(TypeItem.Head))
-            {
-                _itensEquipmentSpritePlayer[5].GetComponent<SpriteRenderer>().sprite = allSprites[0];
-            } 
-            else if (item.TypeItem.Equals(TypeItem.Shield))
-            {
-                _itensEquipmentSpritePlayer[6].gameObject.SetActive(true);
-                _itensEquipmentSpritePlayer[7].gameObject.SetActive(false);
-                _itensEquipmentSpritePlayer[6].GetComponent<SpriteRenderer>().sprite = allSprites[0];
-            }
-            else if (item.TypeItem.Equals(TypeItem.MagicItem))
-            {
-                _itensEquipmentSpritePlayer[6].gameObject.SetActive(false);
-                _itensEquipmentSpritePlayer[7].gameObject.SetActive(true);
-                _itensEquipmentSpritePlayer[7].GetComponent<SpriteRenderer>().sprite = allSprites[0];
-            }  
-            else if(item.TypeItem.Equals(TypeItem.Bow))
-            {
-                _itensEquipmentSpritePlayer[8].gameObject.SetActive(false);
-                _itensEquipmentSpritePlayer[9].gameObject.SetActive(true);
-                _itensEquipmentSpritePlayer[9].GetComponent<SpriteRenderer>().sprite = allSprites[0];
-            }
-            else if (item.TypeItem.Equals(TypeItem.Staff) || item.TypeItem.Equals(TypeItem.Sword))
-            {
-                _itensEquipmentSpritePlayer[8].gameObject.SetActive(true);
-                _itensEquipmentSpritePlayer[9].gameObject.SetActive(false);
-                _itensEquipmentSpritePlayer[8].GetComponent<SpriteRenderer>().sprite = allSprites[0];
-            } 
+            _itensEquipmentSpritePlayer[0].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+            _itensEquipmentSpritePlayer[1].GetComponent<SpriteRenderer>().sprite = allSprites[1];
+            _itensEquipmentSpritePlayer[2].GetComponent<SpriteRenderer>().sprite = allSprites[2];
+            _itensEquipmentSpritePlayer[3].GetComponent<SpriteRenderer>().sprite = allSprites[3];
+            _itensEquipmentSpritePlayer[4].GetComponent<SpriteRenderer>().sprite = allSprites[4];
+        } 
+        else if (item.TypeItem.Equals(TypeItem.Head))
+        {
+            _itensEquipmentSpritePlayer[5].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+        } 
+        else if (item.TypeItem.Equals(TypeItem.Shield))
+        {
+            _itensEquipmentSpritePlayer[6].gameObject.SetActive(true);
+            _itensEquipmentSpritePlayer[7].gameObject.SetActive(false);
+            _itensEquipmentSpritePlayer[6].GetComponent<SpriteRenderer>().sprite = allSprites[0];
         }
+        else if (item.TypeItem.Equals(TypeItem.MagicItem))
+        {
+            _itensEquipmentSpritePlayer[6].gameObject.SetActive(false);
+            _itensEquipmentSpritePlayer[7].gameObject.SetActive(true);
+            _itensEquipmentSpritePlayer[7].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+        }  
+        else if(item.TypeItem.Equals(TypeItem.Bow))
+        {
+            _itensEquipmentSpritePlayer[8].gameObject.SetActive(false);
+            _itensEquipmentSpritePlayer[9].gameObject.SetActive(true);
+            _itensEquipmentSpritePlayer[9].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+        }
+        else if (item.TypeItem.Equals(TypeItem.Staff) || item.TypeItem.Equals(TypeItem.Sword))
+        {
+            _itensEquipmentSpritePlayer[8].gameObject.SetActive(true);
+            _itensEquipmentSpritePlayer[9].gameObject.SetActive(false);
+            _itensEquipmentSpritePlayer[8].GetComponent<SpriteRenderer>().sprite = allSprites[0];
+        } 
     }
 
     private void ActiveHud(Item item)
@@ -187,7 +195,7 @@ public class PlayerStatusController : MonoBehaviour
             attributes.UnequipItem(item);
             ChangeSpriteUnEquipArmor(item);
         }
-
+        this.transform.GetComponent<UIAttributes>().UpdateStatus(attributes);
     }
 
     private void ChangeSpriteUnEquipArmor(Item item)

@@ -56,4 +56,20 @@ public class GameDataManager : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + keyAtributs + ".json", jsonString);
         Debug.Log(Application.persistentDataPath + keyAtributs + ".json Saved");
     }
+
+    public static Sprite GetInventorySprite(Item item)
+    {
+        string path;
+        if (item.TypeItem == TypeItem.Armor)
+        {
+            path = "ItensInventory/" + item.TypeItem + "/icon" + item.SpriteItem;
+        }
+        else
+        {
+            path = "ItensInventory/" + item.TypeItem + "/" + item.SpriteItem.ToString();
+        }
+        return Resources.Load<Sprite>(path);
+    }
+
+
 }

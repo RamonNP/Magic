@@ -62,6 +62,11 @@ public class Attributes
         manaCurrent = ManaMax;
 
     }
+
+    public Attributes Clone()
+    {
+        return (Attributes)this.MemberwiseClone();
+    }
     public void EquipItem(Item item)
     {
         BonusEquipmentDistanceFight += item.EquipmentStatus.DistanceFight;
@@ -79,6 +84,7 @@ public class Attributes
         BonusEquipmentPhysicalPower -= item.EquipmentStatus.PhysicalPower;
         BonusEquipmentDEF -= item.EquipmentStatus.Defense;
         CalculateATK();
+        CalculateDEF();
     }    
     public void CalculateATK()
     {
@@ -94,7 +100,6 @@ public class Attributes
         AtkDistanceFight += (ATKBase * BonusEquipmentDistanceFight) / 100;
         AtkDistanceFight += (ATKBase * _runeBonus) / 100;
 
-        CalculateDEF();
     }    
     private void CalculateDEF()
     {

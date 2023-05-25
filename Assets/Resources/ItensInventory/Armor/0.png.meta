@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e513b3e6859f6444d8e3a7b7ed84ea20
+guid: 18c249c8327686a44a6f2e7b4e10ff97
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,85 +117,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Left Arm
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 165
-        width: 60
-        height: 60
-      alignment: 9
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26a297a8ef3f64343a90542c5db8a38d
-      internalID: 1655553278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Right Arm
-      rect:
-        serializedVersion: 2
-        x: 185
-        y: 170
-        width: 60
-        height: 60
-      alignment: 9
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 93c3e5f4e6b52b84ca2be13fcf481c1d
-      internalID: 1452703291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Left Hand
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 93
-        width: 64
-        height: 64
-      alignment: 9
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 86e6df19bd1a5e74686392e584e3e6c4
-      internalID: 484525173
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Body
       rect:
         serializedVersion: 2
-        x: 67
-        y: 9
-        width: 115
-        height: 115
+        x: 0
+        y: 362
+        width: 300
+        height: 150
       alignment: 9
-      pivot: {x: 0, y: 1}
+      pivot: {x: 0.29, y: 0.9}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 980c7fce772ac3f4a9bfa0b76d945004
-      internalID: 1823600982
+      spriteID: 71b8d313685e9234fb706d94331db327
+      internalID: 1037291725
       vertices: []
       indices: 
       edges: []
@@ -204,19 +141,82 @@ TextureImporter:
       name: Righ Hand
       rect:
         serializedVersion: 2
-        x: 190
-        y: 95
-        width: 60
-        height: 60
+        x: 300
+        y: 217
+        width: 150
+        height: 145
       alignment: 9
-      pivot: {x: 0, y: 1}
+      pivot: {x: 0.29, y: 0.7}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 85957c8460232f94a82127da20a7a8a5
-      internalID: 198867966
+      spriteID: a9c617ffcb7f9a747817c5f21c130c07
+      internalID: -1050970724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Right Arm
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 362
+        width: 150
+        height: 150
+      alignment: 9
+      pivot: {x: 0.26, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8610b46cad2e9f479f77e7ff30aaeab
+      internalID: 479940082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Arm
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 218
+        width: 150
+        height: 144
+      alignment: 9
+      pivot: {x: 0.25, y: 0.7}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdf0e8900f55a44c9756dddb5ce4c37
+      internalID: 728944591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Left Hand
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 218
+        width: 150
+        height: 144
+      alignment: 9
+      pivot: {x: 0.29, y: 0.72}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab05f5c4c445e7428df5d272ca3747e
+      internalID: -1528212126
       vertices: []
       indices: 
       edges: []
@@ -232,11 +232,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Right Arm: 1452703291
-      Left Arm: 1655553278
-      Righ Hand: 198867966
-      Left Hand: 484525173
-      Body: 1823600982
+      Right Arm: 479940082
+      0_6: 11952559
+      Left Arm: 728944591
+      0_5: -1242209848
+      Righ Hand: -1050970724
+      0_8: 476269346
+      Left Hand: -1528212126
+      0_7: -1042782917
+      Body: 1037291725
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class EquipmentStatus 
+public class EquipmentStatus
 {
     [SerializeField] private int _life;
     [SerializeField] private int _mana;
@@ -15,20 +15,26 @@ public class EquipmentStatus
 
     public void GenerateEquipmentStatus(ClassItem classItem, TypeItem typeItem)
     {
+
         switch (classItem)
         {
             case ClassItem.Mage:
                 switch (typeItem)
                 {
                     case TypeItem.Staff:
-                        _defense = UnityEngine.Random.Range(0, 2);
-                        _magicPower = UnityEngine.Random.Range(20, 26);
-                        _physicalPower = UnityEngine.Random.Range(3, 6);
+                        _defense = GetValueMediator(0, 2);
+                        _magicPower = GetValueMediator(20, 26);
+                        _physicalPower = GetValueMediator(3, 6);
                         break;
                     case TypeItem.Armor:
-                        _mana = UnityEngine.Random.Range(7, 11);
-                        _life = UnityEngine.Random.Range(3, 6);
-                        _defense = UnityEngine.Random.Range(2, 4);
+                        _mana = GetValueMediator(7, 11);
+                        _life = GetValueMediator(3, 6);
+                        _defense = GetValueMediator(2, 4);
+                        break;
+                    case TypeItem.Head:
+                        _mana = GetValueMediator(22, 25);
+                        _life = GetValueMediator(8, 10);
+                        _defense = GetValueMediator(1, 2);
                         break;
                     default:
                         Debug.LogError("Invalid TypeItem for Mage class");
@@ -39,14 +45,19 @@ public class EquipmentStatus
                 switch (typeItem)
                 {
                     case TypeItem.Sword:
-                        _defense = UnityEngine.Random.Range(0, 2);
-                        _magicPower = UnityEngine.Random.Range(3, 6);
-                        _physicalPower = UnityEngine.Random.Range(17, 21);
+                        _defense = GetValueMediator(0, 2);
+                        _magicPower = GetValueMediator(3, 6);
+                        _physicalPower = GetValueMediator(17, 21);
                         break;
                     case TypeItem.Armor:
-                        _mana = UnityEngine.Random.Range(2, 5);
-                        _life = UnityEngine.Random.Range(7, 11);
-                        _defense = UnityEngine.Random.Range(2, 5);
+                        _mana = GetValueMediator(2, 5);
+                        _life = GetValueMediator(7, 11);
+                        _defense = GetValueMediator(2, 5);
+                        break;
+                    case TypeItem.Head:
+                        _mana = GetValueMediator(3, 6);
+                        _life = GetValueMediator(25, 30);
+                        _defense = GetValueMediator(0, 1);
                         break;
                     default:
                         Debug.LogError("Invalid TypeItem for Warrior class");
@@ -57,13 +68,18 @@ public class EquipmentStatus
                 switch (typeItem)
                 {
                     case TypeItem.Bow:
-                        _magicPower = UnityEngine.Random.Range(0, 2);
-                        _distanceFight = UnityEngine.Random.Range(20, 26);
+                        _magicPower = GetValueMediator(0, 2);
+                        _distanceFight = GetValueMediator(20, 26);
                         break;
                     case TypeItem.Armor:
-                        _mana = UnityEngine.Random.Range(3, 6);
-                        _life = UnityEngine.Random.Range(7, 11);
-                        _defense = UnityEngine.Random.Range(2, 4);
+                        _mana = GetValueMediator(3, 6);
+                        _life = GetValueMediator(7, 11);
+                        _defense = GetValueMediator(2, 4);
+                        break;
+                    case TypeItem.Head:
+                        _mana = GetValueMediator(17, 20);
+                        _life = GetValueMediator(12, 15);
+                        _defense = GetValueMediator(0, 2);
                         break;
                     default:
                         Debug.LogError("Invalid TypeItem for Archer class");
@@ -74,6 +90,23 @@ public class EquipmentStatus
                 Debug.LogError("Invalid ClassItem");
                 break;
         }
+        //MultiplyAttributesByMediatingPower();
+    }
+    private int GetValueMediator(int value1, int value2)
+    {
+        float mediatingPower = ConfigManager.GetInstance().MediatingPowerOfItems;
+        return UnityEngine.Random.Range(value1 * (int)mediatingPower, value2 * (int)mediatingPower);
+
+    }
+    public void MultiplyAttributesByMediatingPower()
+    {
+        float mediatingPower = ConfigManager.GetInstance().MediatingPowerOfItems;
+        _life = Mathf.RoundToInt(_life * mediatingPower);
+        _mana = Mathf.RoundToInt(_mana * mediatingPower);
+        _physicalPower = Mathf.RoundToInt(_physicalPower * mediatingPower);
+        _magicPower = Mathf.RoundToInt(_magicPower * mediatingPower);
+        _defense = Mathf.RoundToInt(_defense * mediatingPower);
+        _distanceFight = Mathf.RoundToInt(_distanceFight * mediatingPower);
     }
 
     public int Life
@@ -115,6 +148,6 @@ public class EquipmentStatus
 
 public enum EquipmentSet
 {
-   None,
-   SetOfEnts
+    None,
+    SetOfEnts
 }

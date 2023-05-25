@@ -10,6 +10,7 @@ public class EnemyStatus : MonoBehaviour
     [SerializeField] private EnemyAnimationController _enemyAnimationController;
     [SerializeField] private List<GameObject> _listLootEspecial;
     [SerializeField] private List<GameObject> _listLoot;
+    [SerializeField] private int _lootAmount;
     private float _spawnRadius = 2f;
     private float _spawnForce = 3f;
 
@@ -42,24 +43,33 @@ public class EnemyStatus : MonoBehaviour
 
     public void DropLoot()
     {
-        int numLoot = UnityEngine.Random.Range(0, 6); // gera um número aleatório de 0 a 5
+        int numLoot = UnityEngine.Random.Range(0, _lootAmount); // gera um número aleatório de 0 a 5
         bool isSpecial = (UnityEngine.Random.Range(0, 100) < 5); // 5% de chance de ser um item especial
+
+        if(isSpecial)
+        {
+            SpawnLootAndAddForce(_listLootEspecial);
+        }
 
         for (int i = 0; i < numLoot; i++)
         {
             if (_listLoot.Count > 0)
             {
-                int randomIndex = UnityEngine.Random.Range(0, _listLoot.Count);
-                GameObject lootItem = _listLoot[randomIndex];
-                Debug.Log(lootItem.name);
-                Vector2 randomPosition = new Vector2(UnityEngine.Random.Range(-1f, 5f), UnityEngine.Random.Range(-1f, 7f)).normalized * _spawnRadius;
-                GameObject lootObject = Instantiate(lootItem, (Vector2)transform.position + randomPosition, Quaternion.identity);
-                Rigidbody2D lootRigidbody = lootObject.GetComponent<Rigidbody2D>();
-                lootRigidbody.AddForce(randomPosition * _spawnForce, ForceMode2D.Impulse);
+                SpawnLootAndAddForce(_listLoot);
             }
         }
     }
 
+    private void SpawnLootAndAddForce(List<GameObject> listLoot)
+    {
+        int randomIndex = UnityEngine.Random.Range(0, listLoot.Count);
+        GameObject lootItem = listLoot[randomIndex];
+        Debug.Log(lootItem.name);
+        Vector2 randomPosition = new Vector2(UnityEngine.Random.Range(-1f, 5f), UnityEngine.Random.Range(-1f, 7f)).normalized * _spawnRadius;
+        GameObject lootObject = Instantiate(lootItem, (Vector2)transform.position + randomPosition, Quaternion.identity);
+        Rigidbody2D lootRigidbody = lootObject.GetComponent<Rigidbody2D>();
+        lootRigidbody.AddForce(randomPosition * _spawnForce, ForceMode2D.Impulse);
+    }
 }
 
 public enum EnemyEnum

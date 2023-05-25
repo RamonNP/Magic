@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6606324865384552532}
   - component: {fileID: 1347299576}
   m_Layer: 0
-  m_Name: Armor
+  m_Name: Elven Forest Armor-6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1823600982, guid: ae9642ce5d4d6ef4d81d12918b405f30, type: 3}
+  m_Sprite: {fileID: 1037291725, guid: 1b3031313f37f1548942a6cf9b66d456, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -121,11 +121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _item:
-    IdItem: ARMOR01
-    NameItem: Apprentice's Leather Armor
+    IdItem: ARMOR06
+    NameItem: Elven Forest Armor
     TypeItem: 1
-    SpriteItem: 1
-    classItem: 2
+    _isGroupable: 0
+    _count: 1
+    SpriteItem: 6
+    classItem: 3
     PowerRuneItem:
       Name: 
       SlotsMagic: 0
@@ -157,8 +159,8 @@ BoxCollider2D:
   m_Offset: {x: 0.6656904, y: -0.6354605}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 1}
-    oldSize: {x: 1.15, y: 1.15}
+    pivot: {x: 0.29, y: 0.9}
+    oldSize: {x: 3, y: 1.5}
     newSize: {x: 1.28, y: 1.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
